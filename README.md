@@ -14,7 +14,7 @@ APIs:
 Member/Roles:
 + Brandon: Team Lead, Back-End Dev
 + Alex: Scrum Master, Back-End Dev
-+ Luis: Front-End Dev, (Dev-Ops?)
++ Luis: Front-End Dev,
 + Malika: Front-End Dev
 + High-level requirements for Project 2:
 
