@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+<!-- 
+		What is Hibernate?
+				Hibernate is an ORM and persistance framework. 
+				
+		What is an ORM?
+			Object Relational Mapping. ORMs take objects in our programming languages and converts them 
+				back and form into sql rows in our database. 
+ -->
+ 
+ <hibernate-configuration>
+ 		<!-- We still need to tell hibernate some basic settins for our connection -->
+ 		<session-factory>
+ 				<!-- JDBC stuff  -->
+ 				<!-- 
+ 					URL 
+ 					USERNAME 
+ 					PASSWORD 
+ 					DIALECT 
+ 					DRIVER 
+ 				 -->
+ 				 
+ 				 <property name="hibernate.connection.username">postgres</property>
+ 				 <property name="hibernate.connection.password">p4$$w0rd</property>
+ 				 <property name="hibernate.connection.url">jdbc:postgresql://marketplacedata.cxsi6hkq9t16.us-east-2.rds.amazonaws.com</property>
+ 				 <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+ 				 <property name="hibernate.connection.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+ 				 
+ 				 
+ 				 <property name="hibernate.show_sql">false</property>
+ 				 <property name="hibernate.format_sql">false</property> 
+ 				 
+ 				 <property name="hibernate.connection.pool_size">10</property>
+ 				 
+ 				 
+ 				 <property name="hibernate.hbm2ddl.auto">validate</property>
+ 				
+ 				 
+ 				 <mapping class = "com.revature.models.User"/>
+ 				
+ 		</session-factory>
+ 
+ </hibernate-configuration>
