@@ -1,4 +1,4 @@
-package com.revature.models;
+package com.revature.project2.models;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Configuration;
 
 @Entity
 @Table(name = "user_table")
@@ -29,7 +30,7 @@ public class User {
 	private String password;
 	
 	@Column(name = "phone_number", nullable = false)
-	private boolean phoneNumber;
+	private String phoneNumber;
 	
 	@Column(name = "email", nullable = false)
 	private String email;
@@ -38,9 +39,9 @@ public class User {
 	private List<Purchase> purchaseList;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-	private List<Sale> saleList;
+	private List<CartItem> cart;
 
-	public User(int userId, String username, String password, boolean phoneNumber, String email) {
+	public User(int userId, String username, String password, String phoneNumber, String email) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -77,11 +78,11 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isPhoneNumber() {
+	public String isPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(boolean phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
