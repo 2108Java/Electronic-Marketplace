@@ -23,6 +23,6 @@ public class UserService {
 	public List<User> viewAllUsers(){
 		
 		
-		return userDao.viewAll;
+		return userDao.viewAll();
 	}
 }

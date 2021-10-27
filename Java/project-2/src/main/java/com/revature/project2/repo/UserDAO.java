@@ -52,9 +52,9 @@ public class UserDAO implements JpaRepository<User, Integer> {
 		
 		Session ses = sessionFactory.openSession();
 	
-		Query query = ses.createQuery("from user_table");
+		String query = "from user_table";
 
-		userList = ((org.hibernate.query.Query) query).list();
+		userList = ses.createQuery(query, User.class).list();
 		
 		return userList;
 		
