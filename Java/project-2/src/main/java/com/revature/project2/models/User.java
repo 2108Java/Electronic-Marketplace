@@ -48,6 +48,18 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 	}
+	
+	
+
+	public User(String username, String password, String phoneNumber, String email) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+	}
+
+
 
 	public User() {
 		super();

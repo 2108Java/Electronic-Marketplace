@@ -1,7 +1,10 @@
 package com.revature.project2.service;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.project2.models.Purchase;
 import com.revature.project2.models.User;
 import com.revature.project2.repo.UserDAO;
 
@@ -13,7 +16,14 @@ public class UserService {
 	public boolean addUser(User u) {
 		System.out.println("Service: addUser");
 		System.out.println(u.toString());
-		return userDao.insertUser(u);
+		this.userDao.insertUser(u);
+		return true;
 	
+	}
+	
+	public List<User> viewAllUsers(){
+		
+		
+		return userDao.viewAll();
 	}
 }
