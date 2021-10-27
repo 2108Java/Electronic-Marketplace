@@ -16,7 +16,8 @@ public class UserService {
 	public boolean addUser(User u) {
 		System.out.println("Service: addUser");
 		System.out.println(u.toString());
-		return userDao.insertUser(u);
+		this.userDao.insertUser(u);
+		return true;
 	
 	}
 	

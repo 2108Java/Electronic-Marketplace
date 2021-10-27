@@ -6,15 +6,15 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Aspect
-@Configuration
+//@Aspect
+//@Configuration
 public class AuthenticateService {
 	
-	@Before("execution(* *(..))")
-	public void authenticateSession(JoinPoint jp) {
-		
-		
-		
-	}
+//	@Before("execution(* *(..))")
+//	public void authenticateSession(JoinPoint jp) {
+//		
+//		
+//		
+//	}
 
 }

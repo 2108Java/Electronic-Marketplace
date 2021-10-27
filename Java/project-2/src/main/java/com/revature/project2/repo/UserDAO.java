@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.project2.models.User;
 
-@Repository
+@Repository("UserDAO")
 @Transactional
 public class UserDAO implements JpaRepository<User, Integer> {
 

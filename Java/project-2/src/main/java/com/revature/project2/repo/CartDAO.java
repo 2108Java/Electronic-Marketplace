@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.project2.models.CartItem;
 import com.revature.project2.models.User;
-//
-@Repository
+
+@Repository("CartDAO")
 @Transactional
 public class CartDAO implements JpaRepository<CartItem, Integer>{
 	

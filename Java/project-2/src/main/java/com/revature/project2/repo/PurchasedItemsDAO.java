@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.revature.project2.models.Purchase;
 import com.revature.project2.models.User;
 
-@Repository
+@Repository("PurchaseDAO")
 @Transactional
 public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	
