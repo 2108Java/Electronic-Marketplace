@@ -3,7 +3,10 @@ package com.revature.project2.repo;
 import java.util.List;
 import java.util.Optional;
 
+
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -23,8 +26,20 @@ public class UserDAO implements JpaRepository<User, Integer> {
 	@Autowired
 	private SessionFactory sessionFactory;
 		
-	public boolean insertUser(User username) {
-		sessionFactory.getCurrentSession().save(username);
+	public boolean insertUser(User u) {
+		System.out.println("UserDAO: insertUser");
+		System.out.println(u.toString());
+		//sessionFactory.openSession().save(u);
+		
+		Session ses = sessionFactory.openSession();
+		
+		Transaction tx = ses.beginTransaction();
+		
+		ses.save(u);
+		
+		tx.commit();
+		
+		ses.close();
 		return true;
 	}
 

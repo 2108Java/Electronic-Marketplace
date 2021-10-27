@@ -11,6 +11,8 @@ public class UserService {
 	private UserDAO userDao;
 	
 	public boolean addUser(User u) {
+		System.out.println("Service: addUser");
+		System.out.println(u.toString());
 		return userDao.insertUser(u);
 	
 	}

@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Configuration;
 
 @Entity
 @Table(name = "user_table")
@@ -97,7 +96,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", phoneNumber="
-				+ phoneNumber + ", email=" + email + ", purchaseList=" + purchaseList + "]";
+				+ phoneNumber + ", email=" + email + "]";
 	}
 	
 	
