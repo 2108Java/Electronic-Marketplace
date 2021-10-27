@@ -14,7 +14,7 @@ public class PurchaseService {
 	@Autowired
 	private PurchasedItemsDAO purchasedItemsDAO;
 	
-	public List<Purchase> purchaseList = purchasedItemsDAO.getAllPurchases;
+	
 	
 
 }
