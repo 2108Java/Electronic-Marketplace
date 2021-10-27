@@ -3,6 +3,7 @@ package com.revature.project2.repo;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,6 +26,7 @@ public class UserDAO implements JpaRepository<User, Integer> {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
 		
 	public boolean insertUser(User u) {
 		System.out.println("UserDAO: insertUser");
@@ -40,7 +42,22 @@ public class UserDAO implements JpaRepository<User, Integer> {
 		tx.commit();
 		
 		ses.close();
+		
 		return true;
+	}
+	
+	public List<User> viewAll(){
+		
+		List<User> userList = null;
+		
+		Session ses = sessionFactory.openSession();
+	
+		Query query = ses.createQuery("from user_table");
+
+		userList = ((org.hibernate.query.Query) query).list();
+		
+		return userList;
+		
 	}
 
 	@Override
