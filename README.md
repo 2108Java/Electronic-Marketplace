@@ -39,18 +39,18 @@ Other requirements:
 + Unit testing and e2e testing.
 + BONUS: Accessibility features.
 
-User Stories (Draft):
+User Stories:
 1. Create new account with unique username and password
-2. Login as buyer/seller or admin
+2. View account data such as recently purchased items
 3. View all for sale items
-4. Seller should be able to accept or deny buy offer
-5. Seller should be able to cancel their listing at any time before a buy offer is accepted
-6. Buyer should be able to submit a buy request
-7. Buyer should be able to select based on condition
-8. An admin user can view all transactions
-9. Seller should be able to create a listing
-10. User should be able to search/filter for an item or category
+4. Search/filter items by category
+5. Add Items to cart
+6. Add items to wishlist
+7. User checkout
+8. View items in cart/wishlist
+9. Remove items from cart
+10. User can filter items by price
 
 Stretch Goals:
-+ Bidding System
-+ Internal Messaging
++ View Clearance items
++ Auto-email receipt to buyers
