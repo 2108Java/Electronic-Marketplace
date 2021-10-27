@@ -29,7 +29,7 @@ public class User {
 	private String password;
 	
 	@Column(name = "phone_number", nullable = false)
-	private boolean phoneNumber;
+	private String phoneNumber;
 	
 	@Column(name = "email", nullable = false)
 	private String email;
@@ -38,9 +38,9 @@ public class User {
 	private List<Purchase> purchaseList;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-	private List<Sale> saleList;
+	private List<CartItem> cart;
 
-	public User(int userId, String username, String password, boolean phoneNumber, String email) {
+	public User(int userId, String username, String password, String phoneNumber, String email) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -77,11 +77,11 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isPhoneNumber() {
+	public String isPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(boolean phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -96,7 +96,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", phoneNumber="
-				+ phoneNumber + ", email=" + email + ", purchaseList=" + purchaseList + "]";
+				+ phoneNumber + ", email=" + email + "]";
 	}
 	
 	

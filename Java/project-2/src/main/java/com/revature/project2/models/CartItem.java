@@ -1,24 +1,21 @@
 package com.revature.project2.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "recent_purchases_table")
-public class Purchase {
+@Table(name = "cart_table")
+public class CartItem {
 	
 	@Id 
 	@Column
 	@GeneratedValue
-	private int purchaseId;
+	private int cartId;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id_fk")
@@ -27,22 +24,22 @@ public class Purchase {
 	@Column(name = "sku") 
 	private int sku;
 
-	public Purchase(int purchaseId, int sku) {
+	public CartItem(int cartId, int sku) {
 		super();
-		this.purchaseId = purchaseId;
+		this.cartId = cartId;
 		this.sku = sku;
 	}
 
-	public Purchase() {
+	public CartItem() {
 		super();
 	}
 
 	public int getPurchaseId() {
-		return purchaseId;
+		return cartId;
 	}
 
 	public void setPurchaseId(int purchaseId) {
-		this.purchaseId = purchaseId;
+		this.cartId = purchaseId;
 	}
 
 	public int getSku() {
@@ -55,11 +52,7 @@ public class Purchase {
 
 	@Override
 	public String toString() {
-		return "Purchase [purchaseId=" + purchaseId + ", sku=" + sku + "]";
+		return "Purchase [purchaseId=" + cartId + ", sku=" + sku + "]";
 	}
-	
-	
-	
-	
 
 }
