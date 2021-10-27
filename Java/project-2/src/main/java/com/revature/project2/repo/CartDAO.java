@@ -206,7 +206,5 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
 }
