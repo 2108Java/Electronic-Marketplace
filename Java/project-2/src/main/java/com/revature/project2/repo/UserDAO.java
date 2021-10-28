@@ -25,11 +25,11 @@ public class UserDAO implements JpaRepository<User, String> {
 
 
 	@Autowired
-	private SessionFactory sessionFactory;
+	private SessionFactory sf;
 	
 		
-	public void insertUser(User u) {
-		Session ses = sessionFactory.openSession();
+	public void addUser(User u) {
+		Session ses = sf.openSession();
 		
 		Transaction tx = ses.beginTransaction();
 		
@@ -41,23 +41,23 @@ public class UserDAO implements JpaRepository<User, String> {
 		
 	}
 	
-	public List<User> viewAll(){
+	public List<User> getAllUsers(){
 		
-		List<User> userList = null;
+		List<User> ul = null;
 		
-		Session ses = sessionFactory.openSession();
+		Session ses = sf.openSession();
 	
 		String query = "from user_table";
 
-		userList = ses.createQuery(query, User.class).list();
+		ul = ses.createQuery(query, User.class).list();
 		
-		return userList;
+		return ul;
 		
 	}
 
-	public User selectUserByUsername(String username) {
+	public User getUserByUsername(String username) {
 		
-		Session ses = sessionFactory.openSession();
+		Session ses = sf.openSession();
 		
 		User u = ses.get(User.class, username);
 		
@@ -69,7 +69,7 @@ public class UserDAO implements JpaRepository<User, String> {
 	public boolean existsByName(String username) {
 		boolean exists = false;
 		
-		Session ses = sessionFactory.openSession();
+		Session ses = sf.openSession();
 		
 		User u = ses.get(User.class, username);
 		

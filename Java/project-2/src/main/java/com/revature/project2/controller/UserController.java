@@ -1,5 +1,7 @@
 package com.revature.project2.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -24,27 +26,33 @@ import com.revature.project2.service.UserService;
 public class UserController {
 
 	@Autowired
-	private UserService uServ;
+	private UserService uService;
 	@Autowired
-	private AuthenticateService authServ;
+	private AuthenticateService authService;
 	
 	@GetMapping(value = "/user/{name}")
-	public User selectUserByName( @PathVariable("name") String name) {
-		User existingUser = new User();
-		//uServ.selectUserByName(name);
-		
-		return existingUser;
+	public User getUserByName( @PathVariable("name") String name) {
+	
+		return uService.getUserByUsername(name);
+		 
 	}
 	
 	@PostMapping(value = "/user")
 	public void addUser(@RequestBody User u, HttpServletResponse response) {
 		System.out.println(u.toString());
 		
-		if(uServ.addUser(u)) {
+		if(uService.addUser(u)) {
 			response.setStatus(201);
 		}else {
 			response.setStatus(400);
 		}
+	}
+	
+	@GetMapping(value = "/getAllUsers")
+	public List<User> getAllUsers(){
+		
+		return uService.getAllUsers();
+		
 	}
 	
 	@PostMapping(value = "/login")
@@ -52,9 +60,9 @@ public class UserController {
 		if(u.getUsername().isEmpty() || u.getPassword().isEmpty()) {
 			response.setStatus(400);
 			
-		}else if(authServ.authenticateUser(u.getUsername(), u.getPassword())) {
+		}else if(authService.authenticateUser(u.getUsername(), u.getPassword())) {
 			System.out.println("Inside 'authenticateUser'");
-			u = uServ.getUserByUsername(u.getUsername());
+			u = uService.getUserByUsername(u.getUsername());
 			
 			session.setAttribute("user", u);
 			session.setAttribute("access", true);

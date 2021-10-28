@@ -23,11 +23,11 @@ import com.revature.project2.models.User;
 public class CartDAO implements JpaRepository<CartItem, Integer>{
 	
 	@Autowired
-	private SessionFactory sessionFactory;
+	private SessionFactory sf;
 	
-	public boolean insertCartItem(CartItem ci) {
+	public boolean addCartItem(CartItem ci) {
 		
-		Session ses = sessionFactory.openSession();
+		Session ses = sf.openSession();
 		
 		Transaction tx = ses.beginTransaction();
 		
@@ -38,11 +38,23 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 		return true;
 	}
 	
-	public List<CartItem> viewCart(int userId){
+	public CartItem getCartItem(int userId, int sku) {
+		
+		Session ses = sf.openSession();
+		
+		String query = "from cart_table where userId = " + userId + " and sku = " + sku;
+		
+		CartItem cartItem = (CartItem) ses.createQuery(query, CartItem.class);
+		
+		return cartItem;
+		
+	}
+	
+	public List<CartItem> getCart(int userId){
 		
 		List<CartItem> cart = null;
 		
-		Session ses = sessionFactory.openSession();
+		Session ses = sf.openSession();
 		
 		String query = "from cart_table where userId = " + userId;
 		
