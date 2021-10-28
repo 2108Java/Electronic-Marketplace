@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   }
 
   getData() {
-    const url = 'https://api.bestbuy.com/v1/products(manufacturer=panasonic)?format=json&apiKey=wig6FB7qtD5kSMKnINosQNdv';
+    const url = 'https://api.bestbuy.com/v1/products(manufacturer=sony)?format=json&apiKey=wig6FB7qtD5kSMKnINosQNdv';
     // const url = 'https://jsonplaceholder.typicode.com/photos?albumId=1';
     this.http.get(url).subscribe((res) => {
       this.data = res;
