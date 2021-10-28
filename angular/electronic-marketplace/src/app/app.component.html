@@ -1,11 +1,17 @@
-<app-header></app-header>
+<app-navbar></app-navbar>
 
-<app-row-items></app-row-items>
-<app-row-items></app-row-items>
-<app-row-items></app-row-items>
-<app-row-items></app-row-items>
-<app-row-items></app-row-items>
-<app-row-items></app-row-items>
-<app-row-items></app-row-items>
-<app-row-items></app-row-items>
-<app-row-items></app-row-items>`
+<div *ngFor="let item of data" style="text-align:center">
+  <p>{{ item.name }}</p>
+  <img width="200" alt="thumbnail" [src]="item.image">
+</div>
+
+<div style="text-align:center">
+  <button (click)="checkStoredData()">Check stored data</button>
+</div>
+
+<!-- <div class="gallery" *ngFor="let image of data">
+  <a target="_blank" [href]="image.href">
+    <img [src]="image.thumbnailUrl" width="300" height="200">
+  </a>
+  <div class="desc">{{image.title}}</div>
+</div> -->

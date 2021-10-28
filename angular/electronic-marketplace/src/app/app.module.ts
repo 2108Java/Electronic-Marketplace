@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ItemComponent } from './item/item.component';
-import { RowItemsComponent } from './row-items/row-items.component';
-import { RowsOfRowItemsComponent } from './rows-of-row-items/rows-of-row-items.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ItemComponent,
-    RowItemsComponent,
-    RowsOfRowItemsComponent
+    NavbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
