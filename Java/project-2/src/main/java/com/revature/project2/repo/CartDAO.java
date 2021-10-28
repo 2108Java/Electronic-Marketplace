@@ -38,6 +38,20 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 		return true;
 	}
 	
+	public List<CartItem> viewCart(int userId){
+		
+		List<CartItem> cart = null;
+		
+		Session ses = sessionFactory.openSession();
+		
+		String query = "from cart_table where userId = " + userId;
+		
+		cart = ses.createQuery(query, CartItem.class).list();
+	
+		return cart;
+		
+	}
+	
 
 	@Override
 	public Page<CartItem> findAll(Pageable pageable) {
