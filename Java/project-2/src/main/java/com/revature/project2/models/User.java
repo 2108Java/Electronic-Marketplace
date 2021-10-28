@@ -17,11 +17,12 @@ import javax.persistence.Table;
 @Table(name = "user_table")
 public class User {
 	
-	@Id
+	//@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 	
+	@Id
 	@Column(name = "user_name", nullable = false, unique = true)
 	private String username;
 	

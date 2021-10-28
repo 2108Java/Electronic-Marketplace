@@ -14,16 +14,23 @@ public class UserService {
 	private UserDAO userDao;
 	
 	public boolean addUser(User u) {
-		System.out.println("Service: addUser");
-		System.out.println(u.toString());
-		this.userDao.insertUser(u);
-		return true;
-	
+		boolean created = false;
+		
+		if(userDao.existsByName(u.getUsername())) {
+			userDao.insertUser(u);
+			created = true;
+		}
+		
+		return created;
 	}
 	
 	public List<User> viewAllUsers(){
 		
 		
 		return userDao.viewAll();
+	}
+	
+	public User getUserByUsername(String username) {
+		return userDao.selectUserByUsername(username);
 	}
 }
