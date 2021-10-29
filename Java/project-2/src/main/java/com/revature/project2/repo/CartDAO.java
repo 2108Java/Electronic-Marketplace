@@ -64,6 +64,20 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 		
 	}
 	
+	public boolean deleteCartItem(CartItem ci) {
+		
+		Session ses = sf.openSession();
+		
+		Transaction tx = ses.beginTransaction();
+		
+		ses.remove(ci);
+		
+		tx.commit();
+		
+		return true;
+		
+	}
+	
 
 	@Override
 	public Page<CartItem> findAll(Pageable pageable) {
