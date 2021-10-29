@@ -11,19 +11,26 @@ import com.revature.project2.repo.UserDAO;
 @Service
 public class UserService {
 	@Autowired
-	private UserDAO userDao;
+	private UserDAO uDao;
 	
 	public boolean addUser(User u) {
-		System.out.println("Service: addUser");
-		System.out.println(u.toString());
-		this.userDao.insertUser(u);
-		return true;
-	
+		boolean created = false;
+		
+		if(uDao.existsByName(u.getUsername())) {
+			uDao.addUser(u);
+			created = true;
+		}
+		
+		return created;
 	}
 	
-	public List<User> viewAllUsers(){
+	public List<User> getAllUsers(){
 		
 		
-		return userDao.viewAll();
+		return uDao.getAllUsers();
+	}
+	
+	public User getUserByUsername(String username) {
+		return uDao.getUserByUsername(username);
 	}
 }
