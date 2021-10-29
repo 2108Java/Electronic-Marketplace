@@ -1,20 +1,36 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from "@angular/common";
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { DataService } from './data.service';
+import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CartComponent } from './cart/cart.component';
+import { ItemComponent } from './item/item.component';
+import { CategoryComponent } from './category/category.component';
+import { UserComponent } from './user/user.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    HeaderComponent,
+    CartComponent,
+    ItemComponent,
+    CategoryComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+    CommonModule,
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
