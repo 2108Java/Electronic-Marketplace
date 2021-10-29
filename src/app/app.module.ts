@@ -8,12 +8,14 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule } from '@angular/forms';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CartComponent
+    CartComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
