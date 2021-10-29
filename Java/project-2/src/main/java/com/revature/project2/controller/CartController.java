@@ -21,13 +21,13 @@ import com.revature.project2.service.CartService;
 public class CartController {
 	
 	@Autowired
-	private CartService cartService;
+	private CartService cService;
 	
 	@PostMapping(value = "/addToCart")
 	public void addCartItem(@RequestBody CartItem ci, HttpServletResponse response) {
 		System.out.println(ci.toString());
 		
-		if(cartService.addCartItem(ci)) {
+		if(cService.addCartItem(ci)) {
 			response.setStatus(201);
 		}else {
 			response.setStatus(400);
@@ -37,14 +37,21 @@ public class CartController {
 	@GetMapping(value = "/getCartItem/{sku}")
 	public CartItem getCartItem(@PathVariable("userId") int userId, @PathVariable("sku") int sku) {
 		
-		return cartService.getCartItem(userId, sku);
+		return cService.getCartItem(userId, sku);
 		
 	}
 	
 	@GetMapping(value = "/getCart")
 	public List<CartItem> getCart(@PathVariable("userId") int userId) {
 		
-		return cartService.getCart(userId);
+		return cService.getCart(userId);
+		
+	}
+	
+	@PostMapping(value = "/removeFromCart")
+	public void removeCartItem(@RequestBody CartItem ci, HttpServletResponse response) {
+		
+		cService.deleteCartItem(ci);
 		
 	}
 

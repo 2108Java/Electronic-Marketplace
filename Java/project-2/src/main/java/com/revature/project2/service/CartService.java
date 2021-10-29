@@ -34,6 +34,14 @@ public class CartService {
 		return cDao.getCart(userId);
 	}
 	
+	public boolean deleteCartItem(CartItem ci) {
+		
+		cDao.deleteCartItem(ci);
+		
+		return true;
+		
+	}
+	
 	
 
 }
