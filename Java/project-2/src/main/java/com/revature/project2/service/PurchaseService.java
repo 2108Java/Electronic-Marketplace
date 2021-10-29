@@ -12,9 +12,24 @@ import com.revature.project2.repo.PurchasedItemsDAO;
 public class PurchaseService {
 	
 	@Autowired
-	private PurchasedItemsDAO purchasedItemsDAO;
+	private PurchasedItemsDAO pDao;
 	
+	public boolean addPurchase(Purchase p) {
+		
+		return pDao.addPurchase(p);
+		
+	}
 	
+	public List<Purchase> getPurchaseList(int userId){
+		
+		return pDao.getPurchaseList(userId);
+	}
+	
+	public Purchase getPurchase(int userId, int sku) {
+		
+		return pDao.getPurchase(userId, sku);
+		
+	}
 	
 
 }

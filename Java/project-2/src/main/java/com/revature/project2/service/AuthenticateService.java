@@ -30,7 +30,7 @@ public class AuthenticateService {
 		
 		if(userDao.existsByName(username));
 			System.out.println("Inside 'authenticateUser' service");
-			User temp = userDao.selectUserByUsername(username);
+			User temp = userDao.getUserByUsername(username);
 		
 			if(temp.getPassword().equals(password)){
 				authenticated = true;

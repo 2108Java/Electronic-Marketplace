@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -22,9 +24,47 @@ import com.revature.project2.models.User;
 public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	
 	@Autowired
-	private SessionFactory sessionFactory;
+	private SessionFactory sf;
 	
+	public boolean addPurchase(Purchase p) {
+		
+		Session ses = sf.openSession();
+		
+		Transaction tx = ses.beginTransaction();
+		
+		ses.save(p);
+		
+		tx.commit();
+		
+		return true;
+	}
 	
+	public List<Purchase> getPurchaseList(int userId) {
+		
+		List<Purchase> purchaseList = null;
+		
+		Session ses = sf.openSession();
+		
+		String query = "from recent_purchases_table where user_id = " + userId;
+
+		purchaseList = ses.createQuery(query, Purchase.class).list();
+		
+		return purchaseList;
+	}
+	
+	public Purchase getPurchase(int userId, int sku){
+		
+
+		Purchase purchase = null;
+		
+		Session ses = sf.openSession();
+		
+		String query = "from recent_purchases_table where user_id = " + userId + "and sku = " + sku;
+
+		purchase = (Purchase) ses.createQuery(query, Purchase.class);
+		
+		return purchase; 
+	}
 
 	@Override
 	public Page<User> findAll(Pageable pageable) {
@@ -193,5 +233,7 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

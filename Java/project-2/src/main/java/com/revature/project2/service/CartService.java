@@ -13,13 +13,35 @@ import com.revature.project2.repo.CartDAO;
 public class CartService {
 	
 	@Autowired
-	CartDAO cartDao;
+	CartDAO cDao;
 	
-	public List<CartItem> viewAllUsers(int userId){
+	public boolean addCartItem(CartItem ci) {
 		
+		cDao.addCartItem(ci);
 		
+		return true;
 		
-		return cartDao.viewCart(userId);
 	}
+	
+	public CartItem getCartItem(int userId, int sku) {
+		
+		return cDao.getCartItem(userId, sku);
+		
+	}
+	
+	public List<CartItem> getCart(int userId){
+
+		return cDao.getCart(userId);
+	}
+	
+	public boolean deleteCartItem(CartItem ci) {
+		
+		cDao.deleteCartItem(ci);
+		
+		return true;
+		
+	}
+	
+	
 
 }
