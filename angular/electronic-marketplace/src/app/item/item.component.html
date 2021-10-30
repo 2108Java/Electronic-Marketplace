@@ -1,35 +1,50 @@
-<app-category></app-category>
-<!--<div *ngIf="items.length">
-    <div *ngFor='let product of items'>
-    <p>{{ product.name }}</p>
-    <img width="200" alt="thumbnail" [src]="product.image">
-    <p>{{ product.salePrice }} </p>
-    <p></p>
-    <button class="btn btn-primary"> Add To Cart</button>
-    </div>
-</div>
-<router-outlet></router-outlet>
-<app-category></app-category>
-<div *ngFor='let item of items'> {{item.name}} </div>-->
+<div class="card-top container-fluid">
+  <div class="container d-flex">
+    <div class="item">
+      <a>
+        <img src="http://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg">
+        <h5>Laptop</h5>
 
-<h2>My Items</h2>
-    <div class = "container">
-        <input type="text"class="form-control" [(ngModel)] = "name" placeholder="Search Products">
-        <button (click)="getItem()"  class="btn btn-primary">Filter data</button>
+      </a>
+
     </div>
-  
-    <div class="container">
-        <div class="row">
-          <ng-container *ngFor="let item of items">
-            <div class="card col-md-3">
-          <img src="{{item.image}}" >
-          <h5>{{item.name}}</h5>
-          <h5></h5>
-          <p><strong>Price: </strong>${{item.salePrice}}</p>
-          <p></p>
-          <button class="btn btn-primary"> Add To Cart</button>
-        </div>
-      </ng-container>
+    <div class="item">
+      <a>
+        <img
+          src="https://ipt.imgix.net/206728/x/0/beginner-s-guide-to-types-of-cameras-for-digital-photography-2.jpg?auto=compress%2Cformat&ch=Width%2CDPR&dpr=1&ixlib=php-3.3.0&w=883">
+        <h5>Camera</h5>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img
+          src="https://images.samsung.com/is/image/samsung/levant-fhd-t5300-ua43t5300auxtw-frontblack-229857917?$720_576_PNG$">
+        <h5>TV</h5>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <input type="text" class="form-control" [(ngModel)]="name" placeholder="Search Products">
+
+  <button (click)="getItem()" class="btn btn-primary">Filter data</button>
+
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let item of data">
+      <div class="card col-md-3">
+        <img src="{{item.image}}">
+        <h5>{{item.name}}</h5>
+        <h5></h5>
+        <p><strong>Price: </strong>${{item.salePrice}}</p>
+        <p></p>
+        <button class="btn btn-primary btn-block" (Click)="addToCart(item)"> Add To Cart</button>
       </div>
-      </div>
-<router-outlet></router-outlet>
+    </ng-container>
+  </div>
+</div>

@@ -3,16 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
-import { CategoryComponent } from './category/category.component';
 import { ItemComponent } from './item/item.component';
-import { RouteGuard } from './route.guard';
 
 const routes :Routes=[
-  { path:'items', component:ItemComponent },
-  { path:'cart', component:CartComponent},
-  { path: 'home', component: AppComponent, canActivate: [RouteGuard] },
-  { path: 'categories', component: CategoryComponent },
-  //{ path: '**', component: PageNotFoundComponent },
+  {path :'',redirectTo:'items', pathMatch:'full'},
+  {path:'items', component:ItemComponent },
+  {path:'cart', component:CartComponent}
 ];
 
 @NgModule({
