@@ -22,7 +22,7 @@ import com.revature.project2.service.AuthenticateService;
 import com.revature.project2.service.UserService;
 
 @RestController("UserController")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4402", allowCredentials = "true") //before, Spring would not send the session cookie back! allowCredentials = "true")
 public class UserController {
 
 	@Autowired
@@ -48,15 +48,15 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping(value = "/getAllUsers")
-	public List<User> getAllUsers(){
+	//@GetMapping(value = "/getAllUsers")
+	//public List<User> getAllUsers(){
 		
-		return uService.getAllUsers();
+	//	return uService.getAllUsers();
 		
-	}
+	//}
 	
 	@PostMapping(value = "/login")
-	public void authenticateUser(@RequestBody User u, HttpSession session, HttpServletResponse response) {
+	public User authenticateUser(@RequestBody User u, HttpSession session, HttpServletResponse response) {
 		if(u.getUsername().isEmpty() || u.getPassword().isEmpty()) {
 			response.setStatus(400);
 			
@@ -71,6 +71,8 @@ public class UserController {
 		}else {
 			response.setStatus(401);
 		}
+		
+		return u;
 	}
 	
 	@GetMapping(value = "/logout")
@@ -81,7 +83,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "/checkSession")
-	public User validateSession(HttpSession session) {
+	public User  validateSession(HttpSession session) {
 		
 		User u = null;
 		
