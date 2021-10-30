@@ -4,33 +4,32 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.project2.models.Purchase;
 import com.revature.project2.models.User;
 import com.revature.project2.repo.UserDAO;
 
 @Service
 public class UserService {
 	@Autowired
-	private UserDAO uDao;
+	private UserDAO userDao;
 	
 	public boolean addUser(User u) {
 		boolean created = false;
 		
-		if(uDao.existsByName(u.getUsername())) {
-			uDao.addUser(u);
+		if(userDao.existsByName(u.getUsername())) {
+			userDao.addUser(u);
 			created = true;
 		}
 		
 		return created;
 	}
 	
-	public List<User> getAllUsers(){
+	//public List<User> viewAllUsers(){
 		
 		
-		return uDao.getAllUsers();
-	}
+	//	return userDao.viewAll();
+	//}
 	
 	public User getUserByUsername(String username) {
-		return uDao.getUserByUsername(username);
+		return userDao.getUserByUsername(username);
 	}
 }
