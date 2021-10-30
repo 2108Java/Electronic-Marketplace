@@ -1,1 +1,47 @@
-<p>cart works!</p>
+<ng-container *ngIf="true">
+    <div class="container">
+        <div class= "card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Item Image</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>camera</td>
+                            <td>image</td>
+                            <td>1000</td>
+                            <td>1</td>
+                            <td>1000</td>
+                            <td>
+                                <button class="btn btn-danger">Delete</button></td>
+    
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="false">
+<div class="container">
+    <div class="card">
+        <h4 class="card-title">Shopping Cart</h4>
+        </div>
+        <div class="center">
+            <img src="http://www.clker.com/cliparts/8/I/N/T/9/T/shopping-card-hi.png">
+            <h5>Your Shopping is empty </h5>
+            <h6>Add item to it</h6>
+            <button class="btn btn-primary">Start Shopping</button>
+        </div>
+        </div>
+</ng-container>

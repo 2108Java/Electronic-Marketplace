@@ -6,12 +6,14 @@ import { CartComponent } from './cart/cart.component';
 import { CategoryComponent } from './category/category.component';
 import { ItemComponent } from './item/item.component';
 import { RouteGuard } from './route.guard';
+import { UserComponent } from './user/user.component';
 
 const routes :Routes=[
   { path:'items', component:ItemComponent },
   { path:'cart', component:CartComponent},
   { path: 'home', component: AppComponent, canActivate: [RouteGuard] },
-  { path: 'categories', component: CategoryComponent },
+  { path: 'categories', component: CategoryComponent, canActivate: [RouteGuard] },
+  { path: 'user', component: UserComponent },
   //{ path: '**', component: PageNotFoundComponent },
 ];
 

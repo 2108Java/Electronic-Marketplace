@@ -34,6 +34,11 @@ export class UserComponent implements OnInit {
     this.userService.loginRequest(currentUser).subscribe(
       response => {
         console.log(response);
+        //currentUser.email = response.body.email;
+        //currentUser.userId = response.body.userId;
+        //currentUser.phoneNumber = response.body.phoneNumber;
+        //console.log(currentUser);
+
         this.router.navigate(['/home']);
         //console.log(response);
       });
