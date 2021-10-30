@@ -16,9 +16,9 @@ export class ItemListService {
         //this.itemsJson.lastIndexOf("}")
     //);
     
-      console.log(this.itemsJson);
+      //console.log(this.itemsJson);
       this.items = JSON.parse(this.itemsJson);
-      console.log(this.items[1]);
+      //console.log(this.items[1]);
   }
 
   public clear(){

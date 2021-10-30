@@ -12,6 +12,7 @@ import { CartComponent } from './cart/cart.component';
 import { ItemComponent } from './item/item.component';
 import { CategoryComponent } from './category/category.component';
 import { UserComponent } from './user/user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -22,6 +23,8 @@ import { UserComponent } from './user/user.component';
     ItemComponent,
     CategoryComponent,
     UserComponent,
+    PageNotFoundComponent
+
   ],
   imports: [
     BrowserModule,

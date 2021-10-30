@@ -6,13 +6,17 @@ import { CartComponent } from './cart/cart.component';
 import { CategoryComponent } from './category/category.component';
 import { ItemComponent } from './item/item.component';
 import { RouteGuard } from './route.guard';
+import { UserComponent } from './user/user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes :Routes=[
-  { path:'items', component:ItemComponent },
-  { path:'cart', component:CartComponent},
-  { path: 'home', component: AppComponent, canActivate: [RouteGuard] },
-  { path: 'categories', component: CategoryComponent },
-  //{ path: '**', component: PageNotFoundComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'home', component: AppComponent, canActivate: [RouteGuard]},
+  { path: 'categories', component: CategoryComponent, canActivate: [RouteGuard] },
+  { path: 'items', component:ItemComponent,canActivate: [RouteGuard]},
+  { path: 'cart', component:CartComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

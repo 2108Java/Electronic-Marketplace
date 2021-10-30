@@ -3,6 +3,8 @@ import { ItemListService } from '../item-list.service';
 import { Item } from '../item.module';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-item',
@@ -14,7 +16,8 @@ export class ItemComponent implements OnInit {
   items: Item[] = [];
   public name :string ='';
 
-  constructor(public itemListService: ItemListService,private router: Router){ }
+  constructor(public itemListService: ItemListService, private router: Router, 
+              private http: HttpClient, private cartService: CartService){ }
 
   ngOnInit(): void {
     this.getItems();
@@ -24,7 +27,7 @@ export class ItemComponent implements OnInit {
   getItems(): void{
     this.items = [];
     this.itemListService.getItems().subscribe(items => this.items = items);
-    console.log(this.items);
+    //console.log(this.items);
   }
 
   getItem(){
@@ -38,5 +41,10 @@ export class ItemComponent implements OnInit {
       this.salePrice=this.data.salePrice;
       console.log(this.name);
       */
+    }
+
+    addToCart(item: Item) {
+      //console.log(this.items);
+      this.cartService.addtoCart(item);
     }
 }
