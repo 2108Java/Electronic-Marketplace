@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
 import { CategoryComponent } from './category/category.component';
 import { ItemComponent } from './item/item.component';
+import { RouteGuard } from './route.guard';
 
 const routes :Routes=[
   { path:'items', component:ItemComponent },
   { path:'cart', component:CartComponent},
-  { path: 'home', component: AppComponent },
-  { path: 'categories', component: CategoryComponent }
+  { path: 'home', component: AppComponent, canActivate: [RouteGuard] },
+  { path: 'categories', component: CategoryComponent },
+  //{ path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
