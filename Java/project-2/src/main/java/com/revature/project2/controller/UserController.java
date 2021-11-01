@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.project2.models.CartItem;
+import com.revature.project2.models.Purchase;
 import com.revature.project2.models.User;
 import com.revature.project2.service.AuthenticateService;
 import com.revature.project2.service.UserService;
@@ -64,6 +66,12 @@ public class UserController {
 			System.out.println("Inside 'authenticateUser'");
 			u = uService.getUserByUsername(u.getUsername());
 			
+			//List<CartItem> cart = u.getCartItem();
+			//u.setCartItem(cart);
+			
+			//List<Purchase> pList = u.getPurchase();
+			//u.setPurchase(pList);
+			
 			session.setAttribute("user", u);
 			session.setAttribute("access", true);
 			
@@ -92,6 +100,7 @@ public class UserController {
 			u = new User();
 		}else {
 			u = (User) session.getAttribute("user");
+			u = uService.getUserByUsername(u.getUsername());
 		}
 		
 		return u; //either empty user or an actual user!

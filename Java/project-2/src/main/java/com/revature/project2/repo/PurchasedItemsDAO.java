@@ -17,11 +17,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.revature.project2.models.Purchase;
-import com.revature.project2.models.User;
 
 @Repository("PurchaseDAO")
 @Transactional
-public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
+public class PurchasedItemsDAO implements JpaRepository<Purchase, Integer>{
 	
 	@Autowired
 	private SessionFactory sf;
@@ -39,11 +38,11 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 		return true;
 	}
 	
-	public List<Purchase> getPurchaseList(int userId) {
+	public List<Purchase> getPurchaseList(Integer userId) {
 		
 		List<Purchase> purchaseList = null;
 		
-		Session ses = sf.openSession();
+		Session ses = sf.getCurrentSession();
 		
 		String query = "from recent_purchases_table where user_id = " + userId;
 
@@ -67,19 +66,19 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	}
 
 	@Override
-	public Page<User> findAll(Pageable pageable) {
+	public Page<Purchase> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends User> S save(S entity) {
+	public <S extends Purchase> S save(S entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<User> findById(Integer id) {
+	public Optional<Purchase> findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -103,7 +102,7 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	}
 
 	@Override
-	public void delete(User entity) {
+	public void delete(Purchase entity) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -115,7 +114,7 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends User> entities) {
+	public void deleteAll(Iterable<? extends Purchase> entities) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -127,49 +126,49 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	}
 
 	@Override
-	public <S extends User> Optional<S> findOne(Example<S> example) {
+	public <S extends Purchase> Optional<S> findOne(Example<S> example) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends User> Page<S> findAll(Example<S> example, Pageable pageable) {
+	public <S extends Purchase> Page<S> findAll(Example<S> example, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends User> long count(Example<S> example) {
+	public <S extends Purchase> long count(Example<S> example) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public <S extends User> boolean exists(Example<S> example) {
+	public <S extends Purchase> boolean exists(Example<S> example) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public List<User> findAll() {
+	public List<Purchase> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<User> findAll(Sort sort) {
+	public List<Purchase> findAll(Sort sort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<User> findAllById(Iterable<Integer> ids) {
+	public List<Purchase> findAllById(Iterable<Integer> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends User> List<S> saveAll(Iterable<S> entities) {
+	public <S extends Purchase> List<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -181,19 +180,19 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	}
 
 	@Override
-	public <S extends User> S saveAndFlush(S entity) {
+	public <S extends Purchase> S saveAndFlush(S entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends User> List<S> saveAllAndFlush(Iterable<S> entities) {
+	public <S extends Purchase> List<S> saveAllAndFlush(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteAllInBatch(Iterable<User> entities) {
+	public void deleteAllInBatch(Iterable<Purchase> entities) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -211,29 +210,29 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	}
 
 	@Override
-	public User getOne(Integer id) {
+	public Purchase getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User getById(Integer id) {
+	public Purchase getById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends User> List<S> findAll(Example<S> example) {
+	public <S extends Purchase> List<S> findAll(Example<S> example) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends User> List<S> findAll(Example<S> example, Sort sort) {
+	public <S extends Purchase> List<S> findAll(Example<S> example, Sort sort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
+
 
 }

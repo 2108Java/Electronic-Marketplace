@@ -72,12 +72,22 @@ export class CartService {
   }
 
   persistCartItem(product: Item): Observable<HttpResponse<Item>>{
-    //console.log(currentUser);
-    let itemSku: number = product.sku;
-    //let skuString: string  = itemSku.toString();
-    let user_id: number = 1;
-    let cartIndex: any = {"cartId": 0, "sku": itemSku, "user": null};
+
+    //let itemSku: number = product.sku;
+    //let cartIndex: any = {"cartId": 0, "sku": itemSku, "user": null};
     
-    return this.myHttpClient.post<Item>("http://localhost:8080/addToCart",cartIndex,{withCredentials: true,observe: 'response' as 'response'});
+    return this.myHttpClient.post<Item>("http://localhost:8080/addToCart",product,{withCredentials: true,observe: 'response' as 'response'});
+  };
+
+
+  persistPurchasedItems(products: Item[]): Observable<HttpResponse<Item>>{
+
+    //let itemSku: number = product.sku:
+    //let cartIndex: any = {"purchaseId": 0, "sku": itemSku, "user": null};
+    //let body: any  = [];
+    //for (var index of products){
+       // let itemSku: = products[index].products.sku;
+    //}
+    return this.myHttpClient.post<Item>("http://localhost:8080/purchase",products,{withCredentials: true,observe: 'response' as 'response'});
   };
 }

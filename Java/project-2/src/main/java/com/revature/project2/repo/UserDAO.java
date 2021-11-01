@@ -17,6 +17,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.project2.models.CartItem;
+import com.revature.project2.models.Purchase;
 import com.revature.project2.models.User;
 
 @Repository("UserDAO")
@@ -74,6 +76,12 @@ public class UserDAO implements JpaRepository<User, Integer> {
 		userList = ses.createQuery(hql,User.class).list();
 		
 		User u = userList.get(0);
+		
+		List<CartItem> cart = u.getCartItem();
+		u.setCartItem(cart);
+		
+		//List<Purchase> pList = u.getPurchaseList();
+		//u.setPurchaseList(pList);
 		
 		
 		ses.close();

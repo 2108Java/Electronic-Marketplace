@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 
 @Entity
 @Table(name = "user_table")
@@ -35,10 +38,12 @@ public class User {
 	@Column(name = "email", nullable = false)
 	private String email;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Purchase> purchaseList;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<CartItem> cart;
 
 	public User(int userId, String username, String password, String phoneNumber, String email) {
@@ -106,9 +111,22 @@ public class User {
 		this.email = email;
 	}
 	
-	//trying something out
-	public void setCartItems(List<CartItem> cart) {
+	
+	public void setCartItem(List<CartItem> cart) {
 		this.cart = cart;
+	}
+	
+	public List<CartItem> getCartItem() {
+		return cart;
+	}
+	
+	
+	public void setPurchase(List<Purchase> purchaseList) {
+		this.purchaseList = purchaseList;
+	}
+		
+	public List<Purchase> getPurchase() {
+		return purchaseList;
 	}
 
 	@Override
