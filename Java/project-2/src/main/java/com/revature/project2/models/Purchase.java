@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import java.util.List;
+
 @Entity
 @Table(name = "recent_purchases_table")
 public class Purchase {
