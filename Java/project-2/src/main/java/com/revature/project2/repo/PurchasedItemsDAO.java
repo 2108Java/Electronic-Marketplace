@@ -26,7 +26,7 @@ public class PurchasedItemsDAO implements JpaRepository<User, Integer>{
 	@Autowired
 	private SessionFactory sf;
 	
-	public boolean addPurchase(Purchase p) {
+	public boolean addPurchase(List<Purchase> p) {
 		
 		Session ses = sf.openSession();
 		

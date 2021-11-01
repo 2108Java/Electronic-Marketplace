@@ -78,6 +78,17 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 		
 	}
 	
+	public boolean deleteCart(int userId) {
+		
+		Session ses = sf.openSession();
+		
+		String query = "delete from cart_table where user_id =" + userId;
+		
+		ses.createQuery(query);
+				
+		return true;
+	}
+	
 
 	@Override
 	public Page<CartItem> findAll(Pageable pageable) {

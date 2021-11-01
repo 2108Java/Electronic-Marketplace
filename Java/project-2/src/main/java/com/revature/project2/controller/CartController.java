@@ -54,5 +54,12 @@ public class CartController {
 		cService.deleteCartItem(ci);
 		
 	}
+	
+	@PostMapping(value = "/deleteCart")
+	public void deleteCart(@PathVariable("userId") int userId) {
+		
+		cService.deleteCart(userId);
+		
+	}
 
 }
