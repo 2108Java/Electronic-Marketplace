@@ -37,9 +37,9 @@ public class UserDAO implements JpaRepository<User, Integer> {
 		
 		//ses.save(u);
 		System.out.println("running update user from userdao");
-		ses.update(u); 
+		//ses.update(u); 
 		
-		//ses.save(u); 
+		ses.save(u); 
 		
 		tx.commit();
 		
