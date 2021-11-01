@@ -3,6 +3,8 @@ package com.revature.project2.repo;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,10 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.project2.models.CartItem;
-import com.revature.project2.models.User;
 
 @Repository("CartDAO")
 @Transactional
@@ -85,7 +85,7 @@ System.out.println("item2 ID=" + item2.getId() + ", Foreign Key Cart ID=" + item
 		
 		List<CartItem> cart = null;
 		
-		Session ses = sf.openSession();
+		Session ses = sf.getCurrentSession();
 		
 		String query = "from cart_table where userId = " + userId;
 		

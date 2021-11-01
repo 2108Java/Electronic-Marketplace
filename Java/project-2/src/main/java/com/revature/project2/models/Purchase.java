@@ -53,6 +53,10 @@ public class Purchase {
 		this.sku = sku;
 	}
 	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 
 	@Override
 	public String toString() {

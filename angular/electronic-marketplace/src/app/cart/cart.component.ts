@@ -23,4 +23,14 @@ export class CartComponent implements OnInit {
     //this.cartItems = this.cartService.cartList;
     console.log(this.cartItems);
   }
+
+  purchaseItems(){
+    this.cartService.persistPurchasedItems(this.cartItems).subscribe(
+      response =>{
+        //currentUser.setU = response;
+        console.log(response);
+        this.router.navigate(['/']);
+        //console.log(currentUser);
+      });
+    }
 }
