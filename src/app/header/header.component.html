@@ -1,4 +1,4 @@
-<header>
+<!--<header>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -16,18 +16,14 @@
     
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item me-3 me-lg-0">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
+                        <button routerLink="cart" class="btn btn-primary">
+                            <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+                            <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+                        </button>
                     </li>
                     <!-- Icons -->
-                    <li class="nav-item me-3 me-lg-0">
-                        <a class="btn btn" href="#">
-                            <i style="font-size:30px" class="fa fa-shopping-cart"></i>
-                            <div style="font-size: 10px;" class="badge bg-danger">5</div>
-                        </a>
-                    </li>
-                    <li>
+                   
+                  <!-- <li>
                         <p>
                             <button type="button" class="btn btn-default btn-sm">
                               <span class="glyphicon glyphicon-user"></span> User 
@@ -48,4 +44,37 @@
             </div>
         </div>
     </nav>
+</header> --> 
+
+
+<header>
+    <div class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="navbar-brand align-item-center d-flex">
+            
+            <strong style="font-size: 30px;">eMarket</strong>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="search products" >
+                
+            </div>
+            <span class="fas fa-search search-icon"></span>
+
+            <div>
+               
+                    <button type="button" class="btn btn-primary">
+                        <i style="font-size: 25px;" class="fas fa-user"></i>
+                     
+                    </button>
+                 
+
+
+            </div>
+
+            
+
+        </div>
+        <button routerLink="cart" class="btn btn-primary">
+            <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+            <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+        </button>
+    </div>
 </header>

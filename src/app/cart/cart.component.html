@@ -1,4 +1,4 @@
-<ng-container *ngIf="true">
+<ng-container *ngIf="product.length!=0">
     <div class="container">
         <div class= "card-table">
             <div class="cart-product">
@@ -14,15 +14,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>camera</td>
-                            <td>image</td>
-                            <td>1000</td>
-                            <td>1</td>
-                            <td>1000</td>
+                        <tr  *ngFor ="let item  of product">
+                            <td>{{item.name}}</td>
+                            <td><img style ="width: 120px;" src ="{{item.image}}" ></td>
+                            <td>{{item.salePrice}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.total}}</td>
                             <td>
-                                <button class="btn btn-danger">Delete</button></td>
+                                <button (click) ="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
     
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
+                            <td><button routerLink="/items" class="btn btn-primary">Shop More</button></td>
+                            <td><button class="btn btn-success">Checkout</button></td>
+                            <td><strong>Grand Total : ${{grandTotal}}</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -32,7 +39,7 @@
 </ng-container>
 
 
-<ng-container *ngIf="false">
+<ng-container *ngIf="product.length==0">
 <div class="container">
     <div class="card">
         <h4 class="card-title">Shopping Cart</h4>
@@ -41,7 +48,7 @@
             <img src="http://www.clker.com/cliparts/8/I/N/T/9/T/shopping-card-hi.png">
             <h5>Your Shopping is empty </h5>
             <h6>Add item to it</h6>
-            <button class="btn btn-primary">Start Shopping</button>
+            <button routerLink="/items" class="btn btn-primary">Start Shopping</button>
         </div>
         </div>
 </ng-container>

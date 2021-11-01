@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from '../item.module';
+import { CartService } from '../cart.service';
 
 
 
@@ -14,28 +15,32 @@ import { Item } from '../item.module';
 export class ItemComponent implements OnInit {
 
   title = 'e-market';
-  public data: any = []
-  public filterdata:any=[]
-  constructor(private http: HttpClient) {
+  public productList: any ;
+  public filterdata:any=[];
+ 
+  constructor(private http: HttpClient, private cartService:CartService) {
   }
 
    url = 'https://api.bestbuy.com/v1/products(manufacturer=sony)?format=json&apiKey=wig6FB7qtD5kSMKnINosQNdv';
-  getData() {
+  /*getData() {
 
     
     // const url = 'http://jsonplaceholder.typicode.com/photos?albumId=1';
     this.http.get(this.url).subscribe((res) => {
-      this.data = res;
-      this.data = this.data['products'];
-      console.log(this.data);
-      console.log(typeof this.data);
+      this.productList = res;
+      this.productList = this.productList['products'];
+      this.productList.forEach((a: any) => {
+        Object.assign(a, { quantity: 1, total: a.price });
+      });
+      console.log(this.productList);
+      console.log(typeof this.productList);
     })
   }
 
   checkStoredData() {
-    console.log(this.data);
-    console.log(typeof this.data);
-  }
+    console.log(this.productList);
+    console.log(typeof this.productList);
+  }*/
 
   item:Item | null = null;
   public name :string ='';
@@ -48,8 +53,8 @@ export class ItemComponent implements OnInit {
     return obs;
 
   }
-  private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon/';
-  private fullUrl: string = '';
+  //private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon/';
+  //private fullUrl: string = '';
 
   getItem(){
      
@@ -57,11 +62,11 @@ export class ItemComponent implements OnInit {
    
     let itemObservable: Observable<Item>= this.ajaxCall(this.name);
     itemObservable.subscribe((res)=>{
-      this.data = res;
-      this.data = this.data['products'];
-      this.name=this.data.name;
-      this.image=this.data.image;
-      this.salePrice=this.data.salePrice;
+      this.productList = res;
+      this.productList = this.productList['products'];
+      this.name=this.productList.name;
+      this.image=this.productList.image;
+      this.salePrice=this.productList.salePrice;
       console.log(this.name);
     
     
@@ -73,6 +78,9 @@ export class ItemComponent implements OnInit {
     
 
       }
+      addToCart(item: any) {
+        this.cartService.addtoCart(item);
+      }
 
     
 
@@ -81,8 +89,20 @@ export class ItemComponent implements OnInit {
   
   
       ngOnInit() {
-        this.getData();
-        this.getItem();
+        this.http.get(this.url).subscribe((res) => {
+          this.productList = res;
+          this.productList = this.productList['products'];
+          
+          this.productList.forEach((a: any) => {
+            Object.assign(a, { quantity: 1, total: a.salePrice });
+          });
+          console.log(this.productList);
+          
+        });
+        
+          this.getItem();
+
+        
       }
   
 
