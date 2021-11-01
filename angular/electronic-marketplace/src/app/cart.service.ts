@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of} from 'rxjs';
 import { Item } from './item.module';
@@ -71,13 +71,13 @@ export class CartService {
     return of(cartSizeString);
   }
 
-  persistCartItem(product: Item): Observable<any>{
+  persistCartItem(product: Item): Observable<HttpResponse<Item>>{
     //console.log(currentUser);
     let itemSku: number = product.sku;
     //let skuString: string  = itemSku.toString();
     let user_id: number = 1;
-    let cartIndex: any = { "sku": itemSku, "user_id_fk": 1};
+    let cartIndex: any = {"cartId": 0, "sku": itemSku, "user": null};
     
-    return this.myHttpClient.post<any>("http://localhost:8080/addToCart",cartIndex, {withCredentials: true});
+    return this.myHttpClient.post<Item>("http://localhost:8080/addToCart",cartIndex,{withCredentials: true,observe: 'response' as 'response'});
   };
 }

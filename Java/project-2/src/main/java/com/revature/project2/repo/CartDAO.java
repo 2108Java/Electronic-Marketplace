@@ -22,6 +22,25 @@ import com.revature.project2.models.User;
 @Transactional
 public class CartDAO implements JpaRepository<CartItem, Integer>{
 	
+	
+	/* sessionFactory = HibernateAnnotationUtil.getSessionFactory();
+session = sessionFactory.getCurrentSession();
+System.out.println("Session created");
+	    
+tx = session.beginTransaction();
+
+session.save(cart);
+session.save(item1);
+session.save(item2);
+	    
+tx.commit();
+System.out.println("Cart ID=" + cart.getId());
+
+System.out.println("item1 ID=" + item1.getId() + ", Foreign Key Cart ID=" + item.getCart().getId());
+
+System.out.println("item2 ID=" + item2.getId() + ", Foreign Key Cart ID=" + item.getCart().getId());
+	 */
+	
 	@Autowired
 	private SessionFactory sf;
 	
@@ -37,13 +56,15 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 		Transaction tx = ses.beginTransaction();
 		
 		
+		//"update cart_table set user_id_fk= " + 1 + " where cartId=" + 4;
+		
+		String query = "update cart_table set user_id_fk = 1 where cart_id = 4";
+		
+		ses.createSQLQuery(query);
+		
 		ses.save(ci);
 		
 		tx.commit();
-		
-		String query = "update cart_table set user_id_fk= " + 1 + " where cartId=" + 4;
-		
-		ses.createQuery(query, CartItem.class);
 		
 		return true;
 	}

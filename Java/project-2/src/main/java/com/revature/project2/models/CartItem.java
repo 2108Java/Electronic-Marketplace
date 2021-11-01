@@ -50,10 +50,15 @@ public class CartItem {
 		this.sku = sku;
 	}
 	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 	
 	@Override
 	public String toString() {
-		return "CartItem [cartId=" + cartId + ", sku=" + sku + ", userId="+ user +"]";
+		return "CartItem [cartId=" + cartId + ", sku=" + sku + ", userId="+ user.toString() +"]";
 	}
 
 }

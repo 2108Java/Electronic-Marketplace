@@ -45,17 +45,19 @@ public class UserDAO implements JpaRepository<User, Integer> {
 		
 	}
 	
-	public List<User> getAllUsers(){
+	//public List<User> getAllUsers(){
+	public User getAllUsers(int userId){
 		
 		List<User> ul = null;
 		
 		Session ses = sf.openSession();
 	
-		String query = "from user_table";
+		String query = "from user_table where user_id = "+ userId;
 
 		ul = ses.createQuery(query, User.class).list();
+		 
 		
-		return ul;
+		return ul.get(0);
 		
 	}
 
