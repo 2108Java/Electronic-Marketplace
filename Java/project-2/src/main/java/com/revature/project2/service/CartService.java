@@ -42,6 +42,15 @@ public class CartService {
 		
 	}
 	
+	public boolean deleteCart(int userId) {
+		
+		cDao.deleteCart(userId);
+		
+		return true;
+	}
+	
+	
+	
 	
 
 }
