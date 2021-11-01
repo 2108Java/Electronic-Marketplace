@@ -1,3 +1,4 @@
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of} from 'rxjs';
 import { Item } from './item.module';
@@ -11,13 +12,16 @@ export class CartService {
   public cartList: Item[] = [];
   public productList = new BehaviorSubject<any>([]);
 
-  constructor() { }
+  public cartSize: number = 0;
+
+  constructor(private myHttpClient: HttpClient) { }
 
   //getItem() {
     //return this.productList.asObservable();
   //}
 
   getItem(): Observable<Item[]>{
+    console.log("getting cart items");
     let passItems = of(this.cartList);
     return passItems;
   }
@@ -28,12 +32,17 @@ export class CartService {
   }
 
   addtoCart(product: any) {
-    this.cartList.push(product);
-    this.productList.next(this.cartList);
+  //addtoCart(itemJson: string){
+    //this.cartItemsJson = JSON.stringify(itemJson);
+    //this.cartList = JSON.parse(itemJson);
+
+    this.cartSize = this.cartList.push(product);
+    
+    //$this.productList.next(this.cartList);
     this.getTotal();
     console.log(this.cartList);
-    console.log(typeof this.cartList);
-    //console.log(this.productList);
+    //console.log(typeof this.cartList);
+    console.log(this.productList);
   }
 
   getTotal() {
@@ -56,4 +65,19 @@ export class CartService {
     this.cartList = [];
     this.productList.next(this.cartList);
   }
+
+  getCartSize(): Observable<string> {
+    let cartSizeString: string = this.cartSize.toString();
+    return of(cartSizeString);
+  }
+
+  persistCartItem(product: Item): Observable<HttpResponse<Item>>{
+    //console.log(currentUser);
+    let itemSku: number = product.sku;
+    //let skuString: string  = itemSku.toString();
+    let user_id: number = 1;
+    let cartIndex: any = {"cartId": 0, "sku": itemSku, "user": null};
+    
+    return this.myHttpClient.post<Item>("http://localhost:8080/addToCart",cartIndex,{withCredentials: true,observe: 'response' as 'response'});
+  };
 }

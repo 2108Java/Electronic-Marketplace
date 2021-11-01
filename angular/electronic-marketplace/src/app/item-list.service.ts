@@ -11,6 +11,7 @@ export class ItemListService {
   
   public add(itemJson: string){
       this.itemsJson = JSON.stringify(itemJson);
+      
       //let mySubString = this.itemsJson.substring(
         //this.itemsJson.indexOf("{"), 
         //this.itemsJson.lastIndexOf("}")
@@ -18,16 +19,18 @@ export class ItemListService {
     
       //console.log(this.itemsJson);
       this.items = JSON.parse(this.itemsJson);
-      //console.log(this.items[1]);
+      //console.log("running add from item-list service");
+      //console.log(this.items);
   }
 
   public clear(){
-    console.log("clearing list")
+    //console.log("clearing list")
     this.items= [];
-    console.log(this.items[0]);
+    //console.log(this.items[0]);
   }
 
   public getItems(): Observable<Item[]>{
+    //console.log("running getItems from item-list service")
     let passItems = of(this.items);
     return passItems;
   }

@@ -49,10 +49,16 @@ public class CartItem {
 	public void setSku(int sku) {
 		this.sku = sku;
 	}
-
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+	
 	@Override
 	public String toString() {
-		return "Purchase [purchaseId=" + cartId + ", sku=" + sku + "]";
+		return "CartItem [cartId=" + cartId + ", sku=" + sku + ", userId="+ user.toString() +"]";
 	}
 
 }

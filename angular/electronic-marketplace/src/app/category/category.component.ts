@@ -14,7 +14,7 @@ export class CategoryComponent implements OnInit {
   title = 'e-market';
   public data: any = []
   
-  constructor(private http: HttpClient, private itemListService: ItemListService,  private router: Router) {}
+  constructor(private http: HttpClient, public itemListService: ItemListService,  private router: Router) {}
 
   //Start BZ code:
   //public itemsList: string = "";
@@ -33,21 +33,24 @@ export class CategoryComponent implements OnInit {
       //console.log(this.data);
       //console.log(typeof this.data);
     //})
-
+    console.log("Running getData from category");
     const baseUrl1  = 'https://api.bestbuy.com/v1/products(categoryPath.id=';
     const baseUrl2  = '&salePrice>40)?format=json&show=sku,name,salePrice,image&apiKey=wig6FB7qtD5kSMKnINosQNdv';
     const productsUrl = baseUrl1+category+baseUrl2;
     
-    this.router.navigate(['home']);
+    //this.router.navigate(['home']);
     this.itemListService.clear();
-    console.log("clearing list")
+    //console.log("clearing list")
 
+    let cat = this.categories.find(c => c.catId === category)!;
+    //console.log(cat.name);
+    let routeName: string = 'items/'+cat.name;
     this.http.get(productsUrl).subscribe((res) => {
       this.data = res;
       this.itemListService.add(this.data['products']);
       //this.data = this.data['products'];
       //console.log(this.data);
-      this.router.navigate(['items']);
+      this.router.navigate([routeName]);
     })
 
 

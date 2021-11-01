@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
 
   getItemsFromCart(){
     //this.cartItems = [];
-    this.cartService.getItem().subscribe(items => this.cartItems = items.map(val => val));
+    this.cartService.getItem().subscribe(items => this.cartItems = items);
     //this.cartItems = this.cartService.cartList;
     console.log(this.cartItems);
   }

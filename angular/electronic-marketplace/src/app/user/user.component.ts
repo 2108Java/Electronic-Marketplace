@@ -34,10 +34,12 @@ export class UserComponent implements OnInit {
     this.userService.loginRequest(currentUser).subscribe(
       response => {
         console.log(response);
+
+        //currentUser = response.body
         //currentUser.email = response.body.email;
         //currentUser.userId = response.body.userId;
         //currentUser.phoneNumber = response.body.phoneNumber;
-        //console.log(currentUser);
+        console.log(currentUser);
 
         this.router.navigate(['/home']);
         //console.log(response);
@@ -50,6 +52,7 @@ export class UserComponent implements OnInit {
         response =>{
              //currentUser.setU = response;
               console.log(response);
+              console.log(response.userId)
              //console.log(currentUser);
            });
       

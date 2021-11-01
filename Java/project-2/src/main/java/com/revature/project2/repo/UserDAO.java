@@ -21,7 +21,7 @@ import com.revature.project2.models.User;
 
 @Repository("UserDAO")
 @Transactional
-public class UserDAO implements JpaRepository<User, String> {
+public class UserDAO implements JpaRepository<User, Integer> {
 
 
 	@Autowired
@@ -33,7 +33,11 @@ public class UserDAO implements JpaRepository<User, String> {
 		
 		Transaction tx = ses.beginTransaction();
 		
-		ses.save(u);
+		//ses.save(u);
+		System.out.println("running update user from userdao");
+		ses.update(u); 
+		
+		//ses.save(u); 
 		
 		tx.commit();
 		
@@ -41,25 +45,36 @@ public class UserDAO implements JpaRepository<User, String> {
 		
 	}
 	
-	public List<User> getAllUsers(){
+	//public List<User> getAllUsers(){
+	public User getAllUsers(int userId){
 		
 		List<User> ul = null;
 		
 		Session ses = sf.openSession();
 	
-		String query = "from user_table";
+		String query = "from user_table where user_id = "+ userId;
 
 		ul = ses.createQuery(query, User.class).list();
+		 
 		
-		return ul;
+		return ul.get(0);
 		
 	}
 
 	public User getUserByUsername(String username) {
+		System.out.println("running getUserByUsername from userdao");
+		
+		List<User> userList = null;
 		
 		Session ses = sf.openSession();
 		
-		User u = ses.get(User.class, username);
+		String hql = "from User where user_name = '" + username + "'";
+		
+		
+		userList = ses.createQuery(hql,User.class).list();
+		
+		User u = userList.get(0);
+		
 		
 		ses.close();
 		
@@ -68,12 +83,19 @@ public class UserDAO implements JpaRepository<User, String> {
 	
 	public boolean existsByName(String username) {
 		boolean exists = false;
+		List<User> userList = null;
+		
+		System.out.println("running existsByUsername from userdao");
 		
 		Session ses = sf.openSession();
 		
-		User u = ses.get(User.class, username);
+		String hql = "from User where user_name = '" + username + "'";
 		
-		if(!(u == null)) {
+		
+		userList = ses.createQuery(hql,User.class).list();
+		
+		
+		if(!(userList == null)) {
 			exists = true;
 		}
 		
@@ -81,7 +103,7 @@ public class UserDAO implements JpaRepository<User, String> {
 		
 		return exists;
 	}
-	
+
 	@Override
 	public Page<User> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
@@ -95,13 +117,37 @@ public class UserDAO implements JpaRepository<User, String> {
 	}
 
 	@Override
+	public Optional<User> findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean existsById(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public long count() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
+	public void deleteById(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void delete(User entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAllById(Iterable<? extends Integer> ids) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -155,6 +201,12 @@ public class UserDAO implements JpaRepository<User, String> {
 	}
 
 	@Override
+	public List<User> findAllById(Iterable<Integer> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public <S extends User> List<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
@@ -185,9 +237,27 @@ public class UserDAO implements JpaRepository<User, String> {
 	}
 
 	@Override
+	public void deleteAllByIdInBatch(Iterable<Integer> ids) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void deleteAllInBatch() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public User getOne(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -202,52 +272,6 @@ public class UserDAO implements JpaRepository<User, String> {
 		return null;
 	}
 
-	@Override
-	public Optional<User> findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public boolean existsById(String id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public User getOne(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User getById(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteAllById(Iterable<? extends String> ids) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<User> findAllById(Iterable<String> ids) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteAllByIdInBatch(Iterable<String> ids) {
-		// TODO Auto-generated method stub
-		
-	}
-		
 }

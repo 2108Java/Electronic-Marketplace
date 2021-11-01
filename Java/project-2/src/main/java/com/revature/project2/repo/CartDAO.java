@@ -22,14 +22,45 @@ import com.revature.project2.models.User;
 @Transactional
 public class CartDAO implements JpaRepository<CartItem, Integer>{
 	
+	
+	/* sessionFactory = HibernateAnnotationUtil.getSessionFactory();
+session = sessionFactory.getCurrentSession();
+System.out.println("Session created");
+	    
+tx = session.beginTransaction();
+
+session.save(cart);
+session.save(item1);
+session.save(item2);
+	    
+tx.commit();
+System.out.println("Cart ID=" + cart.getId());
+
+System.out.println("item1 ID=" + item1.getId() + ", Foreign Key Cart ID=" + item.getCart().getId());
+
+System.out.println("item2 ID=" + item2.getId() + ", Foreign Key Cart ID=" + item.getCart().getId());
+	 */
+	
 	@Autowired
 	private SessionFactory sf;
 	
 	public boolean addCartItem(CartItem ci) {
 		
+		System.out.println("Inside cart : addcartItem");
+		System.out.println("setting user id");
+		
+		//ci.setUserId(11);
+		
 		Session ses = sf.openSession();
 		
 		Transaction tx = ses.beginTransaction();
+		
+		
+		//"update cart_table set user_id_fk= " + 1 + " where cartId=" + 4;
+		
+		String query = "update cart_table set user_id_fk = 1 where cart_id = 4";
+		
+		ses.createSQLQuery(query);
 		
 		ses.save(ci);
 		
@@ -50,7 +81,7 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 		
 	}
 	
-	public List<CartItem> getCart(int userId){
+	public List<CartItem> getCart(Integer userId){
 		
 		List<CartItem> cart = null;
 		

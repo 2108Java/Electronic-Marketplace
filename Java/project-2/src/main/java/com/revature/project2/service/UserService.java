@@ -14,13 +14,13 @@ public class UserService {
 	
 	public boolean addUser(User u) {
 		boolean created = false;
-		
-		if(userDao.existsByName(u.getUsername())) {
+		System.out.println("running update user from user service");
+		//if(userDao.existsByName(u.getUsername())) {
 			userDao.addUser(u);
 			created = true;
-		}
+		//}
 		
-		return created;
+		return true;
 	}
 	
 	//public List<User> viewAllUsers(){
@@ -31,5 +31,9 @@ public class UserService {
 	
 	public User getUserByUsername(String username) {
 		return userDao.getUserByUsername(username);
+	}
+	
+	public User getAllUsers(int id) {
+		return userDao.getAllUsers(id);
 	}
 }

@@ -16,7 +16,7 @@ public class CartService {
 	CartDAO cDao;
 	
 	public boolean addCartItem(CartItem ci) {
-		
+		System.out.println("Inside cart service: addcartItem");
 		cDao.addCartItem(ci);
 		
 		return true;
@@ -29,7 +29,7 @@ public class CartService {
 		
 	}
 	
-	public List<CartItem> getCart(int userId){
+	public List<CartItem> getCart(Integer userId){
 
 		return cDao.getCart(userId);
 	}
