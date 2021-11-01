@@ -25,7 +25,9 @@ public class PurchaseController {
 	private PurchaseService purchaseService;
 	
 	@PostMapping(value = "/purchase")
+
 	public List<Purchase> addPurchase(@RequestBody List<Purchase> p, HttpServletResponse response, HttpSession session) {
+
 		System.out.println(p.toString());
 		
 		User u = null;
@@ -48,18 +50,20 @@ public class PurchaseController {
 		return p;
 	}
 	
-	@GetMapping(value = "/getPurchase/{sku}")
+	@GetMapping(value = "/getPurchase/{userId}/{sku}")
 	public Purchase getPurchase(@PathVariable("userId") int userId, @PathVariable("sku") int sku) {
 		
 		return purchaseService.getPurchase(userId, sku);
 		
 	}
 	
-	@GetMapping(value = "/getAllPurchases")
+	@GetMapping(value = "/getAllPurchases/{userId}")
 	public List<Purchase> getPurchaseList(@PathVariable("userId") int userId){
 		
 		return purchaseService.getPurchaseList(userId);
 	}
+	
+	
 	
 	
 

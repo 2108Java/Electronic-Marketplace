@@ -14,7 +14,7 @@ public class PurchaseService {
 	@Autowired
 	private PurchasedItemsDAO pDao;
 	
-	public boolean addPurchase(Purchase p) {
+	public boolean addPurchase(List<Purchase> p) {
 		
 		return pDao.addPurchase(p);
 		
