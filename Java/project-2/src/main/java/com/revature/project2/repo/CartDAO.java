@@ -27,13 +27,23 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 	
 	public boolean addCartItem(CartItem ci) {
 		
+		System.out.println("Inside cart : addcartItem");
+		System.out.println("setting user id");
+		
+		//ci.setUserId(11);
+		
 		Session ses = sf.openSession();
 		
 		Transaction tx = ses.beginTransaction();
 		
+		
 		ses.save(ci);
 		
 		tx.commit();
+		
+		String query = "update cart_table set user_id_fk= " + 1 + " where cartId=" + 4;
+		
+		ses.createQuery(query, CartItem.class);
 		
 		return true;
 	}
@@ -50,7 +60,7 @@ public class CartDAO implements JpaRepository<CartItem, Integer>{
 		
 	}
 	
-	public List<CartItem> getCart(int userId){
+	public List<CartItem> getCart(Integer userId){
 		
 		List<CartItem> cart = null;
 		

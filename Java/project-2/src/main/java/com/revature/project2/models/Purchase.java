@@ -52,14 +52,12 @@ public class Purchase {
 	public void setSku(int sku) {
 		this.sku = sku;
 	}
+	
 
 	@Override
 	public String toString() {
 		return "Purchase [purchaseId=" + purchaseId + ", sku=" + sku + "]";
 	}
-	
-	
-	
 	
 
 }

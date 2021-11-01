@@ -1,5 +1,6 @@
 package com.revature.project2.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,19 +15,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project2.models.CartItem;
 import com.revature.project2.models.Purchase;
+import com.revature.project2.models.User;
 import com.revature.project2.service.CartService;
+import com.revature.project2.service.UserService;
 
 @RestController("CartController")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4402", allowCredentials = "true") 
 public class CartController {
 	
 	@Autowired
 	private CartService cService;
+	@Autowired
+	private UserService uService;
 	
 	@PostMapping(value = "/addToCart")
 	public void addCartItem(@RequestBody CartItem ci, HttpServletResponse response) {
 		System.out.println(ci.toString());
-		
+		//create empty list
+		//List<CartItem> newItems = new ArrayList<>();
+		//add cart item to new list
+		//newItems.add(ci);
+		//get user from db
+		//User existingUser = uService.getUserByUsername("test");
+		//set cart item to users list
+		//existingUser.setCartItems(newItems);
+		//System.out.println(existingUser.toString());
+		//update user
+		//uService.addUser(existingUser)
 		if(cService.addCartItem(ci)) {
 			response.setStatus(201);
 		}else {
@@ -41,8 +56,8 @@ public class CartController {
 		
 	}
 	
-	@GetMapping(value = "/getCart")
-	public List<CartItem> getCart(@PathVariable("userId") int userId) {
+	@GetMapping(value = "/getCart/{userId}")
+	public List<CartItem> getCart(@PathVariable("userId") Integer userId) {
 		
 		return cService.getCart(userId);
 		

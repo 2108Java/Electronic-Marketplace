@@ -17,12 +17,12 @@ import javax.persistence.Table;
 @Table(name = "user_table")
 public class User {
 	
-	//@Id
+	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userId;
+	private Integer userId;
 	
-	@Id
+	
 	@Column(name = "user_name", nullable = false, unique = true)
 	private String username;
 	
@@ -66,7 +66,7 @@ public class User {
 		super();
 	}
 
-	public int getUserId() {
+	public float getUserId() {
 		return userId;
 	}
 
@@ -104,6 +104,11 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	//trying something out
+	public void setCartItems(List<CartItem> cart) {
+		this.cart = cart;
 	}
 
 	@Override
