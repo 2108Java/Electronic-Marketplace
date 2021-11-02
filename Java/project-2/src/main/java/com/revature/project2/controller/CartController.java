@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project2.models.CartItem;
+import com.revature.project2.models.Purchase;
 import com.revature.project2.models.User;
 import com.revature.project2.service.CartService;
 import com.revature.project2.service.UserService;
 
 @RestController("CartController")
-@CrossOrigin(origins = "http://emarketplace37.s3.us-east-2.amazonaws.com/", allowCredentials = "true") 
+@CrossOrigin(origins = "http://localhost:4402", allowCredentials = "true") 
 public class CartController {
 	
 	@Autowired
@@ -74,16 +75,45 @@ public class CartController {
 	}
 	
 	@PostMapping(value = "/removeFromCart")
-	public void removeCartItem(@RequestBody CartItem ci, HttpServletResponse response) {
+	public CartItem removeCartItem(@RequestBody CartItem ci, HttpServletResponse response, HttpSession session) {
+		User u = null;
 		
-		cService.deleteCartItem(ci);
+		u = (User) session.getAttribute("user");
 		
+		ci.setUser(u);
+		
+
+		if(cService.deleteCartItem(ci)) {
+			response.setStatus(201);
+		}else {
+			response.setStatus(400);
+		}
+		
+		
+		return ci;
 	}
 	
 	@PostMapping(value = "/deleteCart")
-	public void deleteCart(@PathVariable("userId") int userId) {
+	public List<CartItem> deleteCart(@RequestBody List<CartItem> c, HttpServletResponse response, HttpSession session) {
+
 		
-		cService.deleteCart(userId);
+		System.out.println(c.toString());
+		
+		User u = null;
+		
+		u = (User) session.getAttribute("user");
+		
+		for (int i = 0;i < c.size(); i++) {
+			
+			CartItem singleItem = c.get(i);
+			
+			singleItem.setUser(u);
+			
+			cService.deleteCartItem(singleItem);
+		}
+		
+		
+		return c;
 		
 	}
 
