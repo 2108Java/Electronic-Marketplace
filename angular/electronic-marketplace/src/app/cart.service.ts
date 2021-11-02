@@ -16,9 +16,9 @@ export class CartService {
 
   constructor(private myHttpClient: HttpClient) { }
 
-  //getItem() {
-    //return this.productList.asObservable();
-  //}
+  getItems() {
+    return this.productList.asObservable();
+  }
 
   getItem(): Observable<Item[]>{
     console.log("getting cart items");
@@ -32,13 +32,9 @@ export class CartService {
   }
 
   addtoCart(product: any) {
-  //addtoCart(itemJson: string){
-    //this.cartItemsJson = JSON.stringify(itemJson);
-    //this.cartList = JSON.parse(itemJson);
-
     this.cartSize = this.cartList.push(product);
     
-    //$this.productList.next(this.cartList);
+    this.productList.next(this.cartList);
     this.getTotal();
     console.log(this.cartList);
     //console.log(typeof this.cartList);
@@ -66,8 +62,8 @@ export class CartService {
     this.productList.next(this.cartList);
   }
 
-  getCartSize(): Observable<string> {
-    let cartSizeString: string = this.cartSize.toString();
+  getCartSize(): Observable<Item[]> {
+    let cartSizeString: Item[] = this.cartList;
     return of(cartSizeString);
   }
 
@@ -76,7 +72,7 @@ export class CartService {
     //let itemSku: number = product.sku;
     //let cartIndex: any = {"cartId": 0, "sku": itemSku, "user": null};
     
-    return this.myHttpClient.post<Item>("http://localhost:8080/addToCart",product,{withCredentials: true,observe: 'response' as 'response'});
+    return this.myHttpClient.post<Item>("http://localhost:8081/addToCart",product,{withCredentials: true,observe: 'response' as 'response'});
   };
 
 
@@ -88,6 +84,6 @@ export class CartService {
     //for (var index of products){
        // let itemSku: = products[index].products.sku;
     //}
-    return this.myHttpClient.post<Item>("http://localhost:8080/purchase",products,{withCredentials: true,observe: 'response' as 'response'});
+    return this.myHttpClient.post<Item>("http://localhost:8081/purchase",products,{withCredentials: true,observe: 'response' as 'response'});
   };
 }
