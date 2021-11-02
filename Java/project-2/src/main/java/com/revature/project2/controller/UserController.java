@@ -24,7 +24,7 @@ import com.revature.project2.service.AuthenticateService;
 import com.revature.project2.service.UserService;
 
 @RestController("UserController")
-@CrossOrigin(origins = "http://localhost:4402", allowCredentials = "true") //before, Spring would not send the session cookie back! allowCredentials = "true")
+@CrossOrigin(origins = "*", allowCredentials = "true") //before, Spring would not send the session cookie back! allowCredentials = "true")
 public class UserController {
 
 	@Autowired
