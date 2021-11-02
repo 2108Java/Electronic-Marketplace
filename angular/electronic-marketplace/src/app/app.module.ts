@@ -16,6 +16,7 @@ import { UserComponent } from './user/user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartService } from './cart.service';
 import { ItemListService } from './item-list.service';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ItemListService } from './item-list.service';
     CategoryComponent,
     UserComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CheckoutComponent
 
   ],
   imports: [

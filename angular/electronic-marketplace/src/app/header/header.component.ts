@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from '../cart.service';
 import { Item } from '../item.module';
+import { CartNumberService } from './cart-number.service';
 
 @Component({
   selector: 'app-header',
@@ -10,15 +11,24 @@ import { Item } from '../item.module';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public cartService: CartService) { }
+  constructor(public cartService: CartService, public cartNumberService: CartNumberService) { }
 
   public cartSize: string = "";
+
+  totalItem: number | undefined = 0;
 
   ngOnInit(): void {
 
   }
 
-  getCartSize(){
+  ngOnChanges(): void {
+    this.cartService.getItem()
+      .subscribe(res => {
+        this.totalItem = res.length;
+      })
+  }
+
+  getCartSize() {
     this.cartService.getCartSize().subscribe(items => this.cartSize = items);
   }
 }
