@@ -20,7 +20,7 @@ import com.revature.project2.service.CartService;
 import com.revature.project2.service.UserService;
 
 @RestController("CartController")
-@CrossOrigin(origins = "http://localhost:4402", allowCredentials = "true") 
+@CrossOrigin(origins = "http://emarketplace37.s3.us-east-2.amazonaws.com/", allowCredentials = "true") 
 public class CartController {
 	
 	@Autowired
