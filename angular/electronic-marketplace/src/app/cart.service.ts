@@ -10,6 +10,7 @@ export class CartService {
 
   //public cartList: any = [];
   public cartList: Item[] = [];
+  public productList = new BehaviorSubject<any>([]);
 
   get getCartList(): Item[] {
     return this.cartList;
@@ -18,7 +19,9 @@ export class CartService {
     this.cartList = val;
   }
 
-  public productList = new BehaviorSubject<any>([]);
+  getItems() {
+    return this.productList.asObservable();
+  }
 
   public cartSize: number = 0;
 
