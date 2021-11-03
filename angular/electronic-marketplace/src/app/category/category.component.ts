@@ -13,47 +13,40 @@ import { ItemListService } from '../item-list.service';
 export class CategoryComponent implements OnInit {
   title = 'e-market';
   public data: any = []
-  
-  constructor(private http: HttpClient, public itemListService: ItemListService,  private router: Router) {}
 
-  //Start BZ code:
-  //public itemsList: string = "";
+  constructor(private http: HttpClient, public itemListService: ItemListService, private router: Router) { }
+
   public categories: Array<Categories> = [
-    { name: "Laptops", catId: "abcat0502000"},
-    { name: "Video Games", catId: "pcmcat1484080052161"},
-    { name: "Cameras", catId: "abcat0401005"}
+    { name: "Laptops", catId: "abcat0502000" },
+    { name: "Video Games", catId: "pcmcat1484080052161" },
+    { name: "Cameras", catId: "abcat0401005" },
+    { name: "Phones", catId: "pcmcat209400050001" },
+    { name: "HeadPhones", catId: "abcat0204000" },
+    { name: "Smart Watches", catId: "pcmcat321000050004" },
+    { name: "Tablets", catId: "pcmcat209000050008" }
   ];
 
-  getData(category: string) {
-    //const url = 'https://api.bestbuy.com/v1/products(manufacturer=sony)?format=json&apiKey=wig6FB7qtD5kSMKnINosQNdv';
-    // const url = 'https://jsonplaceholder.typicode.com/photos?albumId=1';
-    //this.http.get(url).subscribe((res) => {
-      //this.data = res;
-      //this.data = this.data['products'];
-      //console.log(this.data);
-      //console.log(typeof this.data);
-    //})
-    console.log("Running getData from category");
-    const baseUrl1  = 'https://api.bestbuy.com/v1/products(categoryPath.id=';
-    const baseUrl2  = '&salePrice>40)?format=json&show=sku,name,salePrice,image&apiKey=wig6FB7qtD5kSMKnINosQNdv';
-    const productsUrl = baseUrl1+category+baseUrl2;
-    
-    //this.router.navigate(['home']);
-    this.itemListService.clear();
-    //console.log("clearing list")
+  public catIdVG: string = "pcmcat1484080052161";
+  public catIdCam: string = "abcat0401005";
+  public catIdLap: string = "abcat0502000";
+  public catIdPhones: string = "pcmcat209400050001";
+  public catIdHead: string = "abcat0204000";
+  public catIdWatches: string = "pcmcat321000050004";
+  public catIdTab: string = "pcmcat209000050008";
 
+  getData(category: string) {
+    console.log("Running getData from category");
+    const baseUrl1 = 'https://api.bestbuy.com/v1/products(categoryPath.id=';
+    const baseUrl2 = '&salePrice>40)?format=json&show=sku,name,salePrice,image&apiKey=wig6FB7qtD5kSMKnINosQNdv';
+    const productsUrl = baseUrl1 + category + baseUrl2;
+    this.itemListService.clear();
     let cat = this.categories.find(c => c.catId === category)!;
-    //console.log(cat.name);
-    let routeName: string = 'items/'+cat.name;
+    let routeName: string = 'items/' + cat.name;
     this.http.get(productsUrl).subscribe((res) => {
       this.data = res;
       this.itemListService.add(this.data['products']);
-      //this.data = this.data['products'];
-      //console.log(this.data);
       this.router.navigate([routeName]);
     })
-
-
   }
 
   checkStoredData() {
@@ -62,6 +55,5 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getData()
   }
 }

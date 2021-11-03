@@ -23,11 +23,14 @@ export class CheckoutComponent implements OnInit {
   purchaseItems() {
     this.cartService.persistPurchasedItems(this.cartService.getCartList).subscribe(
       response => {
-        //currentUser.setU = response;
-        // this.cartList = response;
+        ;
         console.log(response);
-        this.router.navigate(['/']);
-        //console.log(currentUser);
+
+        this.cartService.removeAllCart();
+
+        alert("Thank you for purchasing!")
+
+        this.router.navigate(['/categories']);
       });
   }
 }

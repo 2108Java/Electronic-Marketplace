@@ -13,12 +13,12 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
-  { path: 'home', component: HomeComponent, canActivate: [RouteGuard] },
-  { path: 'categories', component: CategoryComponent, canActivate: [RouteGuard] },
-  { path: 'items/:id', component: ItemComponent, canActivate: [RouteGuard] },
+  //{ path: 'home', component: HomeComponent}, //canActivate: [RouteGuard]
+  { path: 'categories', component: CategoryComponent },
+  { path: 'items/:id', component: ItemComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/categories', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 

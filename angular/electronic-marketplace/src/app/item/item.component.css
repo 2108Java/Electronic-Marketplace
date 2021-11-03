@@ -1,15 +1,27 @@
-.card img{
-    width: 250px;
-    height:250px;
-    margin-bottom:  15px;
+.card img {
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+    height: auto;
+    width: 200px;
+    margin: 0 auto;
     transition :0.3s ease-in-out;
 }
-.card{
+.card {
     padding:20px;
     margin:50px;
 }
-.card img:hover{
+.card img:hover {
     transition:0.3s ease-in-out;
     transform:scale(1.1);
+}
 
+.add-to-cart {
+    padding-bottom: 5px;
+}
+
+.cart-table {
+    padding-left: 21em;
+    margin-bottom:  15px;
 }

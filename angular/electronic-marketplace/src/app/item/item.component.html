@@ -1,43 +1,34 @@
-<!--<div *ngIf="items.length">
-    <div *ngFor='let product of items'>
-    <p>{{ product.name }}</p>
-    <img width="200" alt="thumbnail" [src]="product.image">
-    <p>{{ product.salePrice }} </p>
-    <p></p>
-    <button class="btn btn-primary"> Add To Cart</button>
-    </div>
-</div>
-<router-outlet></router-outlet>
-<app-category></app-category>
-<div *ngFor='let item of items'> {{item.name}} </div>-->
-
 <nav>
   <ul class="categoriess">
-    <li *ngFor="let item of categories">
-      <a routerLink="./items/{{item.name}}"></a>
-        <button id=category type="button" class="btn btn-primary" (click)= 'getData(item.catId)'>{{item.name}}</button>
-    </li>
+    <div class="cart-table">
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let item of categories">
+              <a routerLink="./items/{{item.name}}"></a>
+              <button id=category type="button" class="btn btn-primary"
+                (click)='getData(item.catId)'>{{item.name}}</button>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
   </ul>
 </nav>
 
-<h2>My Items</h2>
-    <div class = "container">
-        <input type="text"class="form-control" [(ngModel)] = "name" placeholder="Search Products">
-        <button (click)="getItem()"  class="btn btn-primary">Filter data</button>
-    </div>
-  
-    <div class="container">
-        <div class="row">
-          <ng-container *ngFor="let item of items">
-            <div class="card col-md-3">
-          <img src="{{item.image}}" >
-          <h5>{{item.name}}</h5>
-          <h5></h5>
-          <p><strong>Price: </strong>${{item.salePrice}}</p>
-          <p></p>
-          <button class="btn btn-primary" (click)='addToCart(item)'> Add To Cart</button>
-        </div>
-      </ng-container>
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let item of items">
+      <div class="card col-md-3">
+        <img src="{{item.image}}" style="max-height: 175px; width: auto;">
+        <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.name}}</h5>
+        <h5></h5>
+        <p><strong>Price: </strong>{{item.salePrice | currency}}</p>
+        <p></p>
+        <button class="btn btn-primary add-to-cart" (click)='addToCart(item)'> Add To Cart</button>
       </div>
-      </div>
+    </ng-container>
+  </div>
+</div>
+
 <router-outlet></router-outlet>

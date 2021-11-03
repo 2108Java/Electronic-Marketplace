@@ -1,9 +1,34 @@
-<nav>
-    <ul class="categoriess">
-      <li *ngFor="let item of categories">
-        <a routerLink="./items/{{item.name}}"></a>
-          <button id=category type="button" class="btn btn-primary" (click)= 'getData(item.catId)'>{{item.name}}</button>
-      </li>
-    </ul>
-</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="image-block col-sm-4"
+      style="background: url(https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80) no-repeat center top;background-size:cover; background-position: bottom right;">
+
+      <p (click)="getData(catIdVG)"> Video games </p>
+    </div>
+    <div class="image-block col-sm-8"
+      style="background: url(https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80) no-repeat center top;background-size:cover; background-position: center;">
+      <p (click)="getData(catIdCam)"> Cameras </p>
+    </div>
+    <div class="image-block col-sm-4"
+      style="background: url(https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80) no-repeat center top;background-size:cover; background-position: bottom center;">
+      <p (click)="getData(catIdLap)"> Laptops </p>
+    </div>
+    <div class="image-block col-sm-4"
+      style="background: url(https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80) no-repeat center top;background-size:cover; background-position: center;">
+      <p (click)="getData(catIdHead)"> Headphones </p>
+    </div>
+    <div class="image-block col-sm-4"
+      style="background: url(https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80) no-repeat center top;background-size:cover; background-position: center;">
+      <p (click)="getData(catIdPhones)"> Phones </p>
+    </div>
+    <div class="image-block col-sm-8"
+      style="background: url(https://images.unsplash.com/photo-1434494343833-76b479733705?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80) no-repeat center top;background-size:cover; background-position: right -20px top -110px;">
+      <p (click)="getData(catIdWatches)"> SmartWatches </p>
+    </div>
+    <div class="image-block col-sm-4"
+      style="background: url(https://images.unsplash.com/photo-1551651639-927b595f815c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80) no-repeat center top;background-size:cover; background-position: right 10px top -110px;">
+      <p (click)="getData(catIdTab)"> Tablets </p>
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>

@@ -35,10 +35,6 @@
                     <input id="SecurityCode" class="form-control" type="password" maxlength="3">
                     <i id="cvc" class="fa fa-question-circle"></i>
                 </div>
-                <!-- <div class="cvc-preview-container two-card hide">
-                    <div class="amex-cvc-preview"></div>
-                    <div class="visa-mc-dis-cvc-preview"></div>
-                </div> -->
             </div>
             <div class="zip-code-group form-group">
                 <label for="ZIPCode">ZIP/Postal code</label>
@@ -50,7 +46,7 @@
                 </div>
             </div>
             <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit"
-                (click)="purchaseItems()">
+                (click)="purchaseItems()" routerLink="../categories">
                 <span class="submit-button-lock"></span>
                 <span class="align-right">Pay ${{checkoutTotal}}</span>
             </button>

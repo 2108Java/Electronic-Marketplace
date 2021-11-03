@@ -6,35 +6,31 @@
                     <thead>
                         <tr>
                             <th>Item Name</th>
-                            <th>Item Image</th>
+                            <th> </th>
                             <th>Price</th>
-                            <!--<th>Quantity</th>-->
-                            <!-- <th>Total</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of cartItems">
                             <td>{{item.name}}</td>
-                            <td><img src="{{item.image}}"></td>
-                            <td>{{item.salePrice}}</td>
-                            <!--<td>1</td>-->
-                            <!-- <td>1000</td> -->
+                            <td><img src="{{item.image}}" style="max-width: 100px;"></td>
+                            <td>{{item.salePrice | currency}}</td>
                             <td>
                                 <button (click)="removeItem(item)" class="btn btn-danger"><i
                                         class="fas fa-trash-alt"></i></button>
                             </td>
-
-
                         </tr>
-                        <h2>Grand total: ${{this.grandTotal}}</h2>
-                        <tr>
+
+                        <div>
+                            <h2 style="float: right;">Grand total: {{this.grandTotal | currency}}</h2>
                             <td colspan="4"></td>
-                            <td><button (click)="emptyCart()" class="btn btn-danger">Empty Cart</button></td>
-                            <td><button routerLink="/" class="btn btn-primary">Shop More</button></td>
-                            <td><button routerLink="/checkout" class="btn btn-success">Checkout</button></td>
-                            <!-- <td><strong>Grand Total : ${{grandTotal}}</strong></td> -->
-                        </tr>
+                            <td><button (click)="emptyCart()" class="btn btn-danger cart-button">Empty Cart</button>
+                            </td>
+                            <td><button routerLink="/" class="btn btn-primary cart-button">Shop More</button></td>
+                            <td><button routerLink="/checkout" class="btn btn-success cart-button">Checkout</button>
+                            </td>
+                        </div>
                     </tbody>
                 </table>
             </div>
@@ -49,14 +45,9 @@
             <h4 class="card-title">Shopping Cart</h4>
         </div>
         <div class="center">
-            <img src="http://www.clker.com/cliparts/8/I/N/T/9/T/shopping-card-hi.png">
-            <h5>Your Shopping is empty </h5>
-            <h6>Add item to it</h6>
+            <img id="emptyCartPicture" src="https://maxcdn.icons8.com/Share/icon/nolan/Shopping/shopping_cart1600.png">
+            <h5>Your shopping carting is empty. </h5>
             <button routerLink="/" class="btn btn-primary">Start Shopping</button>
         </div>
     </div>
 </ng-container>
-
-<div>
-    <button (click)="purchaseItems()" class="btn btn-primary">Purchase Items</button>
-</div>

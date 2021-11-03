@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Item } from './item.module';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -89,7 +90,8 @@ export class CartService {
     //let itemSku: number = product.sku;
     //let cartIndex: any = {"cartId": 0, "sku": itemSku, "user": null};
 
-    return this.myHttpClient.post<Item>("http://localhost:8080/addToCart", product, { withCredentials: true, observe: 'response' as 'response' });
+    //return this.myHttpClient.post<Item>("http://localhost:8081/addToCart%22,product,%7BwithCredentials: true,observe: 'response' as 'response'});
+    return this.myHttpClient.post<Item>("http://ec2-13-59-174-104.us-east-2.compute.amazonaws.com:8081/addToCart", product, { withCredentials: true, observe: 'response' as 'response' });
   };
 
 
@@ -101,6 +103,28 @@ export class CartService {
     //for (var index of products){
     // let itemSku: = products[index].products.sku;
     //}
-    return this.myHttpClient.post<Item>("http://localhost:8080/purchase", products, { withCredentials: true, observe: 'response' as 'response' });
+    return this.myHttpClient.post<Item>("http://localhost:8081/purchase", products, { withCredentials: true, observe: 'response' as 'response' });
   };
+
+  deleteCartItemFromDB(cartItem: Item): Observable<HttpResponse<Item>> {
+    return this.myHttpClient.post<Item>("http://localhost:8081/removeFromCart", cartItem, { withCredentials: true, observe: 'response' as 'response' });
+  }
+
+  deleteCartFromDB(cart: Item[]): Observable<HttpResponse<Item[]>> {
+    return this.myHttpClient.post<Item[]>("http://localhost:8081/deleteCart", cart, { withCredentials: true, observe: 'response' as 'response' });
+  }
+  //start new code
+
+  addNewUser(newUser: User): Observable<HttpResponse<User>> {
+    //console.log(currentUser);
+    return this.myHttpClient.post<User>("http://localhost:8081/user", newUser, { withCredentials: true, observe: 'response' as 'response' });
+    //return this.myHttpClient.post<User>("http://ec2-13-59-174-104.us-east-2.compute.amazonaws.com:8081/user%22,currentUser, {withCredentials: true,observe: 'response' as 'response'});
+
+  }
 }
+
+
+
+
+
+

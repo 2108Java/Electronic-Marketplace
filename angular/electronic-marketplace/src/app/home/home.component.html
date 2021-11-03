@@ -1,1 +1,37 @@
-<p>asdf</p>
+<div class="container-fluid" *ngFor="let item of categories">
+    <div class="row">
+        <a routerLink="/items/Video Games">
+            <div class="image-block col-sm-4"
+                style="background: url(https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80) no-repeat center top;background-size:cover; background-position: bottom right;">
+
+                <p (click)="getData(item.catId)"> Video games </p>
+            </div>
+        </a>
+        <div class="image-block col-sm-8"
+            style="background: url(https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80) no-repeat center top;background-size:cover; background-position: center;">
+            <p> Cameras </p>
+        </div>
+        <div class="image-block col-sm-4"
+            style="background: url(https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80) no-repeat center top;background-size:cover; background-position: bottom center;">
+            <p> Laptops </p>
+        </div>
+        <div class="image-block col-sm-4"
+            style="background: url(https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80) no-repeat center top;background-size:cover; background-position: center;">
+            <p> Headphones </p>
+        </div>
+        <div class="image-block col-sm-4"
+            style="background: url(https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80) no-repeat center top;background-size:cover; background-position: center;">
+            <p> Phones </p>
+        </div>
+        <div class="image-block col-sm-8"
+            style="background: url(https://images.unsplash.com/photo-1434494343833-76b479733705?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80) no-repeat center top;background-size:cover; background-position: right -20px top -110px;">
+            <p> SmartWatches </p>
+        </div>
+        <div class="image-block col-sm-4"
+            style="background: url(https://images.unsplash.com/photo-1551651639-927b595f815c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80) no-repeat center top;background-size:cover; background-position: right 10px top -110px;">
+            <p> iPad Accessories </p>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

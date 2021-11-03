@@ -1,19 +1,39 @@
-<p>user works!</p>
-
 <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" [(ngModel)]= 'uname' placeholder="Enter Username" name="uname" required>
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3>Sign In</h3>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" [(ngModel)]= 'pwd' placeholder="Enter Password" name="psw" required>
-        
-    <button class = "btn btn-info" (click) = 'login()'>Login Button!</button>
-    <p></p>
-    <button (click)="checkSession()"  class="btn btn-primary">Check Session Data</button>
-    <p></p>
-    <button (click)="logout()"  class="btn btn-primary">Logout Button</button>
-  </div>
+      </div>
+      <div class="card-body">
+        <form action="/login" method="POST">
+          <div class="input-group form-group" style="padding-top: 10px;">
 
-  <router-outlet></router-outlet>
+            <label for="uname"></label>
+            <input type="text" [(ngModel)]='uname' placeholder="Enter Username" name="uname" required>
 
-  
+          </div>
+          <div class="input-group form-group" style="padding-top: 10px;">
+
+            <label for="psw"></label>
+            <input type="password" [(ngModel)]='pwd' placeholder="Enter Password" name="psw" required>
+          </div>
+
+          <div class="form-group" style="padding-top: 10px; align-items: center;">
+            <button class="btn btn-primary" (click)='login()'>Login</button>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          Don't have an account?<a href="register.html">Sign Up</a>
+        </div>
+
+      </div>
+
+
+      <div style="padding-top: 20%;">
+        <button (click)="logout()" class="btn btn-primary">Logout</button>
+      </div>
+
+      <router-outlet></router-outlet>
