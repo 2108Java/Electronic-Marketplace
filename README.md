@@ -1,56 +1,59 @@
 # Electronic-Marketplace
-Electronic Marketplace Repository for team G3
 
-Project Goals:
-+ Create a marketplace to buy & sell electronics with other users
+## Project Description
 
-User Roles:
-+ Buyers: Buy items from other sellers. 
-+ Sellers: Sell or post items within the marketplace
+This project is a mock e-commerce website where a user can browse different categories of items, add and remove items from their cart, and check out.
 
-APIs: 
-+ BestBuy
+## Technologies Used
 
-Member/Roles:
-+ Brandon: Team Lead, Back-End Dev
-+ Alex: Scrum Master, Back-End Dev
-+ Luis: Front-End Dev,
-+ Malika: Front-End Dev
-+ High-level requirements for Project 2:
+* Java 8
+* Angular 7+
+* Spring Framework
+* PostgreSQL
+* Jackson
 
-Application must leverage the full stack:
-+ RDBMS for persistence
-+ API built with Java 8+
-+ UI built with Angular 7+
+## Features
 
-Technology framework requirements:
-+ Java API will use Hibernate to communicate with RDBMS
-+ Java API will leverage the Spring Framework
-+ Java API will be RESTful
+List of features ready
+* Users can login 
+* Users can add items to cart and view items in cart while shopping
+* Users can clear specific items from cart, clear all items from cart, or check out cart
 
-Other requirements:
-+ Application will demonstrate at least ten individual user stories
-+ Application will leverage at least one external API
-+ Application's own data model must be sufficiently complex (i.e. >2 tables)
-+ RDBMS will be deployed to the cloud (AWS RDS)
-+ Java API will be deployed to the cloud (AWS EC2)
-+ Angular UI will be deployed to the cloud (AWS S3)
-+ Pipeline tools: Utilise any of your choosing, AWS CodePipeline/CodeBuild/Elastic Beanstalk OR Jenkins OR TravisCI, etc.
-+ Unit testing and e2e testing.
-+ BONUS: Accessibility features.
+To-do list:
+* View Clearance items
+* Auto-email receipt to buyers
 
-User Stories:
-1. Create new account with unique username and password
-2. View account data such as recently purchased items
-3. View all for sale items
-4. Search/filter items by category
-5. Add Items to cart
-6. Add items to wishlist
-7. User checkout
-8. View items in cart/wishlist
-9. Remove items from cart
-10. User can filter items by price
+## Getting Started
+   
+* Run "git clone git@<span></span>github.com:2108Java/Electronic-Marketplace.git" in a terminal
+* In the same terminal, execute "cd Electronic-Marketplace/angular/electronic-marketplace" to navigate to that directory.
+* Execute "code ." to open the project in VS Code.
+* Go to Terminal > New Terminal
+* In the VS Code terminal, type "npm install" to install dependencies
+* In the same terminal type "ng serve -o" to open the Angular project on your http://localhost:4200/
 
-Stretch Goals:
-+ View Clearance items
-+ Auto-email receipt to buyers
+
+## Usage
+
+Select a category in the main page to browse items of that category
+
+![image](https://user-images.githubusercontent.com/56360815/140836951-129a0a82-a638-4c63-92ac-0df6df405180.png)
+
+Users can add an item to the cart by clicking its "Add to Cart" button.
+
+In the shopping cart, the user gets an overview of the items in their cart. They can empty the cart (either by individual item or entirely), shop more, which will persist their cart and take them back to shop for more items, or checkout which will prompt their for their credit card information and simulate a purchase.
+
+![image](https://user-images.githubusercontent.com/56360815/140837770-3621be85-4aaf-4464-899b-3d2920072a3e.png)
+
+
+
+## Contributors
+
++ Brandon Zamora
++ Alex Thorp
++ Luis Ramirez
++ Malika Madlamane
+
+## License
+
+This project uses no licenses.
