@@ -25,12 +25,13 @@ To-do list:
 
 ## Getting Started
    
-Run "git clone git@github.com:2108Java/Electronic-Marketplace.git" in a terminal
-In the same terminal, execute "cd Electronic-Marketplace/angular/electronic-marketplace" to navigate to that directory.
-Execute "code ." to open the project in VS Code.
-Go to Terminal > New Terminal
-In the VS Code terminal, type "npm install" to install dependencies
-In the same terminal type "ng serve -o" to open the Angular project on your http://localhost:4200/
+* Run "git clone git@github.com:2108Java/Electronic-Marketplace.git" in a terminal
+* In the same terminal, execute "cd Electronic-Marketplace/angular/electronic-marketplace" to navigate to that directory.
+* Execute "code ." to open the project in VS Code.
+* Go to Terminal > New Terminal
+* In the VS Code terminal, type "npm install" to install dependencies
+* In the same terminal type "ng serve -o" to open the Angular project on your http://localhost:4200/
+
 
 ## Usage
 
