@@ -14,7 +14,7 @@ This project is a mock e-commerce website where a user can browse different cate
 
 ## Features
 
-List of features ready and TODOs for future development
+List of features ready
 * Users can login 
 * Users can add items to cart and view items in cart while shopping
 * Users can clear specific items from cart, clear all items from cart, or check out cart
